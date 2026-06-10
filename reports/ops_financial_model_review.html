@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Makro Agency — Ops Financial Model Review | June 11, 2026</title>
+<style>
+/* =========================================================
+   MAKRO AGENCY — OPS FINANCIAL MODEL REVIEW
+   Brand tokens: #003d5c primary, #002840 dark, white bg
+   ========================================================= */
+:root {
+  --mk-primary: #003d5c;
+  --mk-dark: #002840;
+  --mk-accent: #0077b6;
+  --mk-light: #e8f4f8;
+  --mk-white: #ffffff;
+  --mk-text: #1a1a2e;
+  --mk-muted: #5a6270;
+  --mk-border: #d1d9e0;
+  --mk-red: #c0392b;
+  --mk-red-bg: #fdecea;
+  --mk-yellow: #d4a017;
+  --mk-yellow-bg: #fef9e7;
+  --mk-green: #1e8449;
+  --mk-green-bg: #eafaf1;
+  --mk-purple: #6c3483;
+  --mk-purple-bg: #f4ecf7;
+  --radius: 6px;
+  --shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 15px; scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--mk-text);
+  background: var(--mk-white);
+  line-height: 1.6;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+}
+@media print {
+  body { padding: 0.5rem; font-size: 12px; max-width: 100%; }
+  .no-print { display: none !important; }
+  .page-break { page-break-before: always; }
+  section { page-break-inside: avoid; }
+  table { font-size: 11px; }
+}
+
+/* --- HEADER --- */
+.report-header {
+  border-bottom: 4px solid var(--mk-primary);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+.report-header h1 {
+  font-size: 2rem;
+  color: var(--mk-dark);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.report-header .subtitle {
+  font-size: 1rem;
+  color: var(--mk-muted);
+  margin-top: 0.25rem;
+}
+.report-header .meta {
+  display: flex;
+  gap: 2rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--mk-muted);
+}
+
+/* --- TABLE OF CONTENTS --- */
+.toc {
+  background: var(--mk-light);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 2.5rem;
+}
+.toc h2 { font-size: 1rem; color: var(--mk-primary); margin-bottom: 0.75rem; }
+.toc ol { padding-left: 1.25rem; columns: 2; column-gap: 2rem; }
+.toc li { margin-bottom: 0.35rem; font-size: 0.9rem; }
+.toc a { color: var(--mk-accent); text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+
+/* --- SECTIONS --- */
+section { margin-bottom: 3rem; }
+h2.section-title {
+  font-size: 1.35rem;
+  color: var(--mk-white);
+  background: var(--mk-primary);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 1.25rem;
+}
+h3 {
+  font-size: 1.1rem;
+  color: var(--mk-dark);
+  border-bottom: 2px solid var(--mk-border);
+  padding-bottom: 0.3rem;
+  margin: 1.5rem 0 0.75rem;
+}
+h4 { font-size: 0.95rem; color: var(--mk-primary); margin: 1rem 0 0.5rem; }
+p, li { margin-bottom: 0.5rem; }
+ul, ol { padding-left: 1.25rem; }
+
+/* --- CALLOUT BOXES --- */
+.callout {
+  border-left: 4px solid;
+  padding: 1rem 1.25rem;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+.callout-critical { border-color: var(--mk-red); background: var(--mk-red-bg); }
+.callout-warning  { border-color: var(--mk-yellow); background: var(--mk-yellow-bg); }
+.callout-info     { border-color: var(--mk-accent); background: var(--mk-light); }
+.callout-success  { border-color: var(--mk-green); background: var(--mk-green-bg); }
+.callout strong   { display: block; margin-bottom: 0.25rem; }
+
+/* --- TABLES --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+}
+th, td {
+  border: 1px solid var(--mk-border);
+  padding: 0.5rem 0.65rem;
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: var(--mk-primary);
+  color: var(--mk-white);
+  font-weight: 600;
+  white-space: nowrap;
+}
+tr:nth-child(even) { background: #f8fafc; }
+tr:hover { background: var(--mk-light); }
+
+/* --- TRAFFIC LIGHTS --- */
+.tl { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+.tl-red    { background: var(--mk-red); }
+.tl-yellow { background: var(--mk-yellow); }
+.tl-green  { background: var(--mk-green); }
+.tl-gray   { background: #aab; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.badge-red    { background: var(--mk-red-bg); color: var(--mk-red); }
+.badge-yellow { background: var(--mk-yellow-bg); color: #8a6d02; }
+.badge-green  { background: var(--mk-green-bg); color: var(--mk-green); }
+.badge-purple { background: var(--mk-purple-bg); color: var(--mk-purple); }
+.badge-gray   { background: #eee; color: #555; }
+
+/* --- DATA FLOW DIAGRAM (Pure CSS) --- */
+.flow-diagram { margin: 1.5rem 0; }
+.flow-layer {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 0;
+}
+.flow-label {
+  min-width: 120px;
+  background: var(--mk-primary);
+  color: var(--mk-white);
+  padding: 0.75rem 0.65rem;
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 1px solid var(--mk-dark);
+}
+.flow-content {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--mk-border);
+  border-left: none;
+  border-bottom: 1px solid var(--mk-border);
+  font-size: 0.85rem;
+}
+.flow-arrow {
+  text-align: center;
+  padding: 0.15rem 0;
+  color: var(--mk-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 60px;
+}
+
+/* --- CHECKLIST TABLES --- */
+.checklist th:first-child { width: 28%; }
+.checklist td:nth-child(2) { width: 12%; }
+
+/* --- ROADMAP --- */
+.roadmap-week {
+  border: 2px solid var(--mk-primary);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+.roadmap-week-header {
+  background: var(--mk-primary);
+  color: var(--mk-white);
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.roadmap-week-body { padding: 1rem 1.25rem; }
+.roadmap-week-body li { margin-bottom: 0.4rem; }
+
+/* --- MISC --- */
+code {
+  background: #f0f2f5;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  font-family: "SF Mono", "Fira Code", Consolas, monospace;
+}
+.muted { color: var(--mk-muted); font-size: 0.88rem; }
+.small { font-size: 0.82rem; }
+pre.source-block {
+  background: #f0f2f5;
+  padding: 1rem;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  border: 1px solid var(--mk-border);
+}
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } .toc ol { columns: 1; } }
+.gap-table td:first-child { font-family: monospace; font-weight: 600; white-space: nowrap; }
+hr.divider { border: none; border-top: 2px solid var(--mk-border); margin: 2rem 0; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- HEADER                                                        -->
+<!-- ============================================================ -->
+<header class="report-header">
+  <h1>Ops Financial Model Review</h1>
+  <div class="subtitle">Technical Architecture &amp; Action Plan for Makro Agency Financial Operations</div>
+  <div class="meta">
+    <span><strong>Prepared for:</strong> Mike (CEO)</span>
+    <span><strong>Prepared by:</strong> Rahul Parmar (COO)</span>
+    <span><strong>Date:</strong> June 11, 2026</span>
+    <span><strong>Status:</strong> Action Required</span>
+  </div>
+</header>
+
+<!-- ============================================================ -->
+<!-- TABLE OF CONTENTS                                             -->
+<!-- ============================================================ -->
+<nav class="toc no-print">
+  <h2>Contents</h2>
+  <ol>
+    <li><a href="#exec-summary">Executive Summary</a></li>
+    <li><a href="#ceo-questions">CEO Question Readiness</a></li>
+    <li><a href="#model-audit">Model Audit</a></li>
+    <li><a href="#gap-matrix">Scorecard-to-Model Gap Matrix</a></li>
+    <li><a href="#data-flow">Data Flow Architecture</a></li>
+    <li><a href="#end-state">End-State Architecture: Where Does the Data Live?</a></li>
+    <li><a href="#controls">Controls &amp; Thresholds</a></li>
+    <li><a href="#rhythms">Rhythm Checklists</a></li>
+    <li><a href="#escalation">Escalation Playbook</a></li>
+    <li><a href="#blind-spots">Blind Spots</a></li>
+    <li><a href="#roadmap">Implementation Roadmap</a></li>
+    <li><a href="#tooling">Recommended Tooling &amp; MCP Integrations</a></li>
+    <li><a href="#appendix">Appendix: Research Sources</a></li>
+  </ol>
+</nav>
+
+<!-- ============================================================ -->
+<!-- 1. EXECUTIVE SUMMARY                                          -->
+<!-- ============================================================ -->
+<section id="exec-summary">
+<h2 class="section-title">1. Executive Summary</h2>
+
+<div class="callout callout-critical">
+<strong>Bottom line: The financial model produces zero reliable numbers today.</strong>
+The Excel workbook was AI-generated and never recalculated in Excel. Every formula cell returns <code>None</code>. There are no actuals, no weekly cash view, no invoice schedule, and no automated reporting. Half the fiscal year has elapsed (June of a Jan-Dec model) with no actuals integration. The model is a well-structured blueprint that cannot yet answer any of the four CEO questions.
+</div>
+
+<p>Mike, here is where we are and what we need to do:</p>
+<ol>
+  <li><strong>The model is non-functional.</strong> 5 critical formula defects (owner cost missing ~$240K/yr, likely revenue double-counting, LER formula mismatch, burden on contractors, deposit double-collection in cash, and the overarching None-cell problem) mean every computed output is unreliable. Fix these before trusting any number.</li>
+  <li><strong>Zero actuals exist.</strong> The model is 100% forward-looking forecast. No QuickBooks import, no variance analysis, no way to answer "did we hit target?" This is the "fictional numbers" problem. The highest-trust first deliverable (committed for June 17): reconcile May 2026 QB actuals against the model line-by-line. This single exercise will prove the model is grounded in reality or expose exactly where it is not.</li>
+  <li><strong>The scorecard requires capabilities the model does not have.</strong> Of 45+ scorecard requirements assessed, 0 are fully satisfied, 7 are partially addressed at a structural level, and 38 are not yet addressed or blocked. The biggest gaps: daily cash email, 13-week weekly cash forecast, project burn alerts, per-client profitability, and all 8 escalation triggers.</li>
+  <li><strong>Headcount decisions cannot wait for a perfect system.</strong> Mike flagged "we might need to fire people in 2 weeks." The model needs a scenario analysis capability (add/remove person, see margin impact) within days, not weeks. This is a medium-effort model enhancement with zero external dependencies.</li>
+  <li><strong>The path forward is a 4-week sprint.</strong> Week 1: fix the model, populate real data, build scenario tool, reconcile May actuals. Week 2: connect QuickBooks and Atio APIs. Week 3: automate daily/weekly reporting rhythms and escalation triggers. Week 4: first real monthly close, CEO dashboard, 13-week cash forecast.</li>
+</ol>
+
+<h3>Numeric Standards Used in This Document</h3>
+<table>
+  <tr><th>Metric</th><th>Target</th><th>Floor</th><th>Source</th></tr>
+  <tr><td>Pretax Profit %</td><td>15%</td><td>10%</td><td>Crabtree / SPI benchmarks. <em>Note: Setup tab currently says 30% -- this is a defect. 30% is aspirational for a mature agency, not a Year 1 operational target. Recommend updating Setup!B6 to 15%.</em></td></tr>
+  <tr><td>LER</td><td>2.0</td><td>1.80</td><td>Crabtree Simple Numbers. <em>Corrected formula: (Revenue - Pass-Throughs) / Total Direct Labor.</em></td></tr>
+  <tr><td>Core Capital</td><td>3 months opex</td><td>2 months opex</td><td>Setup tab target = 3mo; escalation trigger fires at &lt;2mo.</td></tr>
+  <tr><td>PSA Tool</td><td colspan="2">Teamwork (replacing Productive/Jira/Smartsheet)</td><td>Mike, June 8 call. Model's Productive refs are stale.</td></tr>
+  <tr><td>CRM</td><td colspan="2">Atio (replacing HubSpot)</td><td>Mike, June 8 call. Model's HubSpot refs are stale.</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 2. CEO QUESTION READINESS                                     -->
+<!-- ============================================================ -->
+<section id="ceo-questions" class="page-break">
+<h2 class="section-title">2. CEO Question Readiness</h2>
+<p>Gate Zero requirement: Mike must be able to answer these 4 questions in under 5 minutes without opening a spreadsheet. Current state: <span class="badge badge-red">FAIL on all 4</span></p>
+
+<table>
+  <tr>
+    <th style="width:22%">CEO Question</th>
+    <th style="width:12%">Answerable Today?</th>
+    <th style="width:33%">What's Blocking</th>
+    <th style="width:33%">Fix (Owner / Timeline)</th>
+  </tr>
+  <tr>
+    <td><strong>1. Are we good?</strong></td>
+    <td><span class="badge badge-red">NO</span></td>
+    <td>Requires current cash position + cash runway. The model's Cash tab has monthly granularity with no actuals; formula cells return None. No daily cash email exists. The $200K opening balance is a January assumption -- current balance is unknown to the model.</td>
+    <td>Week 1: Pull actual bank balance from QB or Plaid. Week 3: Automate daily cash email by 9 AM with balance + runway. <strong>Owner: Rahul</strong></td>
+  </tr>
+  <tr>
+    <td><strong>2. Did we hit the sales target?</strong></td>
+    <td><span class="badge badge-red">NO</span></td>
+    <td>No actuals exist (Known Issue #7). The model has forecast revenue only. No QB import. No comparison of booked revenue vs target. The "Required Revenue" number itself is unreliable because formulas return None.</td>
+    <td>Week 1 (by June 17): Reconcile May 2026 QB actuals vs model forecast (proof-of-life). Week 2: Build QB actuals import. Week 4: First real actuals-vs-budget comparison. <strong>Owner: Rahul + Jose (QB data)</strong></td>
+  </tr>
+  <tr>
+    <td><strong>3. Does revenue cover our team?</strong></td>
+    <td><span class="badge badge-red">NO</span></td>
+    <td>Salary Cap formula in Plan tab returns None. Even if it calculated, the owner's $20K/mo wage is likely broken (CRIT-01) and the 30% profit target used in the formula is inflated (should be 15%). Both defects would make the answer unreliable even if the cell computed.</td>
+    <td>Week 1: Fix owner cost, profit target. Recalculate Salary Cap. Build "what-if hire" calculator for immediate use. <strong>Owner: Rahul</strong></td>
+  </tr>
+  <tr>
+    <td><strong>4. Are we on margin?</strong></td>
+    <td><span class="badge badge-red">NO</span></td>
+    <td>Pretax Profit % in Scorecard returns None. Even structurally: the LER formula uses the wrong definition (CRIT-02), burden may apply to contractors (CRIT-04), revenue may be double-counted (CRIT-03), and the deposit adjustment may double-collect cash (CRIT-06). Without actuals, "on margin" can only be answered as a forecast -- and the forecast is currently fictional.</td>
+    <td>Week 1: Fix all 5 critical formula defects. Recalculate. Populate with real pipeline data from Atio. Week 2: QB actuals feed gives real margin. <strong>Owner: Rahul</strong></td>
+  </tr>
+</table>
+
+<div class="callout callout-info">
+<strong>The trust-building deliverable (target: June 17):</strong> Pull May 2026 P&L from QuickBooks. Compare line-by-line against the model's May forecast. Document every variance and its cause. This single reconciliation proves the model is grounded in reality -- or exposes exactly where it is not. This is the fastest path from "fictional numbers" to "I trust these numbers." It is the first commitment of Week 1 and will be delivered before any automation work begins.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 3. MODEL AUDIT                                                -->
+<!-- ============================================================ -->
+<section id="model-audit" class="page-break">
+<h2 class="section-title">3. Model Audit</h2>
+<p>The Makro Agency Financial Planner is a 9-tab Excel workbook built by AI (Claude 4.4/4.5). It has never been recalculated in Excel, so every formula cell contains <code>None</code>. The conceptual architecture is sound (Setup feeds People/Expenses, which feed Revenue/Plan/Cash/Scorecard), but 6 critical defects silently corrupt outputs, 8 high-severity structural gaps exist, and 12 medium/low items need attention.</p>
+
+<h3>Per-Tab Status</h3>
+<table>
+  <tr>
+    <th>Tab</th>
+    <th style="width:8%">Status</th>
+    <th>What Works</th>
+    <th>What's Broken / Missing</th>
+    <th>Fix Priority</th>
+  </tr>
+  <tr>
+    <td><strong>1. Setup</strong></td>
+    <td><span class="tl tl-yellow"></span> Partial</td>
+    <td>Input cell structure is correct. Wage, rate, burden, DSO, deposit, stage probabilities, utilization targets all present.</td>
+    <td>Profit target 30% is unrealistic as operational target (should be 15%). No FX rate cell (HIGH-02). No base currency declaration. No model version/date. No input validation.</td>
+    <td><span class="badge badge-red">Week 1</span></td>
+  </tr>
+  <tr>
+    <td><strong>2. People</strong></td>
+    <td><span class="tl tl-red"></span> Broken</td>
+    <td>22-person roster with role, type, level, billable flag, util target, start/end, cost. Structural coverage is good.</td>
+    <td>Owner/CEO row likely contributes $0 cost (CRIT-01, ~$240K/yr impact). Burden may apply to contractors (CRIT-04, ~$36-60K/yr). All formula rows return None. No onboarding ramp for new hires.</td>
+    <td><span class="badge badge-red">Week 1</span></td>
+  </tr>
+  <tr>
+    <td><strong>3. Expenses</strong></td>
+    <td><span class="tl tl-yellow"></span> Partial</td>
+    <td>14 baseline categories totaling ~$40,982/mo. IF/AND date-range formulas for timing. Planned Changes section exists.</td>
+    <td>Planned Changes (Couplier, Gitbook) have $0 amounts. Recruiting/HR at $7,183/mo seems high. Bank Fees at $3,195/mo warrants investigation. No actuals comparison. Formula cells return None.</td>
+    <td><span class="badge badge-yellow">Week 1-2</span></td>
+  </tr>
+  <tr>
+    <td><strong>4. Pipeline</strong></td>
+    <td><span class="tl tl-yellow"></span> Partial</td>
+    <td>22 deals with stage, value, probability, dates, duration. Good structural coverage.</td>
+    <td>Mixed CAD/USD with hardcoded *1.35 (HIGH-02). Even monthly distribution ignores milestones (MED-07). No currency column. No stage exclusion filter for Won deals in probability row (CRIT-03). Formula cells return None.</td>
+    <td><span class="badge badge-red">Week 1</span></td>
+  </tr>
+  <tr>
+    <td><strong>5. Revenue</strong></td>
+    <td><span class="tl tl-red"></span> Broken</td>
+    <td>Structure separates Booked (Won) + Pipeline (weighted) + Other. Shows Required Revenue and Gap.</td>
+    <td>Potential double-counting of Won deals (CRIT-03). Revenue Capacity may overstate by assuming target utilization (MED-05). All cells return None.</td>
+    <td><span class="badge badge-red">Week 1</span></td>
+  </tr>
+  <tr>
+    <td><strong>6. Plan</strong></td>
+    <td><span class="tl tl-red"></span> Broken</td>
+    <td>Management P&L structure (Revenue through Pretax Profit). LER, Salary Cap, overhead ratio, expense benchmarks all present structurally.</td>
+    <td>LER formula uses wrong definition (CRIT-02). Salary Cap formula may use wrong profit target. Two conflicting LER targets (2.0 vs 1.80). All cells return None. No actuals rows. No scenario toggle.</td>
+    <td><span class="badge badge-red">Week 1</span></td>
+  </tr>
+  <tr>
+    <td><strong>7. Cash</strong></td>
+    <td><span class="tl tl-red"></span> Broken</td>
+    <td>Monthly cash flow structure (Opening, In, Out, Closing). Core Capital status. Months of Runway.</td>
+    <td>Deposit may double-collect (CRIT-06). Monthly granularity only -- no 13-week weekly view (HIGH-07). Tax reserve base unclear (MED-08). 40% rate may be too aggressive. $200K opening is stale. All cells return None.</td>
+    <td><span class="badge badge-red">Week 1</span></td>
+  </tr>
+  <tr>
+    <td><strong>8. Scorecard</strong></td>
+    <td><span class="tl tl-red"></span> Broken</td>
+    <td>KPI dashboard with traffic lights and Crabtree checks. Conceptually excellent.</td>
+    <td>Defaults to April (MED-03). All KPI cells return None. Conflicting targets (profit 10% in Scorecard vs 30% in Setup). No actuals-based KPIs. No trend tracking.</td>
+    <td><span class="badge badge-yellow">Week 2</span></td>
+  </tr>
+  <tr>
+    <td><strong>9. CFO Roadmap</strong></td>
+    <td><span class="tl tl-green"></span> OK</td>
+    <td>Good overview of what exists vs TO BUILD. Lists data source assignments (though some are stale).</td>
+    <td>References Productive (should be Teamwork) and HubSpot (should be Atio). These stale references are documented as gap I8.</td>
+    <td><span class="badge badge-gray">Week 2</span></td>
+  </tr>
+  <tr>
+    <td><em>10. Invoice Schedule</em></td>
+    <td><span class="tl tl-gray"></span> Missing</td>
+    <td colspan="2">Does not exist. Required by Mike (revenue = bookings + invoice schedule). Needed for accurate cash timing and milestone-based billing. <strong>Must be added.</strong></td>
+    <td><span class="badge badge-yellow">Week 2-3</span></td>
+  </tr>
+  <tr>
+    <td><em>11. 13-Week Cash</em></td>
+    <td><span class="tl tl-gray"></span> Missing</td>
+    <td colspan="2">Does not exist. #1 item on CFO Roadmap TO BUILD list. Required by scorecard (1B.1). Weekly granularity for payroll timing, contractor payments, collection forecasting. <strong>Must be added.</strong></td>
+    <td><span class="badge badge-red">Week 3-4</span></td>
+  </tr>
+  <tr>
+    <td><em>12. Actuals vs Budget</em></td>
+    <td><span class="tl tl-gray"></span> Missing</td>
+    <td colspan="2">Does not exist. Explicitly required by Mike ("Actuals vs budgeted -- import from QuickBooks"). The absence of this is the "fictional numbers" problem. <strong>Must be added.</strong></td>
+    <td><span class="badge badge-red">Week 2-4</span></td>
+  </tr>
+</table>
+
+<h3>Critical Defects (Must Fix Before Any Number is Trusted)</h3>
+<table class="gap-table">
+  <tr><th style="width:8%">ID</th><th>Defect</th><th style="width:15%">Impact</th><th style="width:10%">Effort</th></tr>
+  <tr>
+    <td>CRIT-05</td>
+    <td><strong>All formula cells return None.</strong> Model was never recalculated in Excel. This is the foundational blocker -- no other fix matters until this is resolved. Open in Excel, press Ctrl+Alt+F9, fix resulting errors.</td>
+    <td>100% of computed outputs are non-functional</td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>CRIT-01</td>
+    <td><strong>Owner/CEO row contributes $0 cost.</strong> The $20,000/mo market-based wage is not flowing into People monthly totals. Understates annual labor cost by ~$240K, inflates profit, LER, and everything downstream.</td>
+    <td>~$240K/yr cost understatement</td>
+    <td>Trivial</td>
+  </tr>
+  <tr>
+    <td>CRIT-02</td>
+    <td><strong>LER formula definition is wrong.</strong> Model uses Gross Profit / Delivery Labor. Crabtree definition: (Revenue - Pass-Throughs) / Total Direct Labor. Also: two conflicting targets (2.0 vs 1.80).</td>
+    <td>LER incomparable to benchmark; decisions based on wrong ratio</td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>CRIT-03</td>
+    <td><strong>Revenue double-counting likely.</strong> Won deals may appear in both Booked rows and probability-weighted Pipeline row. Could inflate forecast revenue by 50-100% on Won deals.</td>
+    <td>Revenue overstated by potentially $500K+</td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>CRIT-04</td>
+    <td><strong>Burden rate applied to contractors.</strong> The 11% payroll burden SUMPRODUCT may lack a Worker Type = "Payroll" filter. Overstates cost by ~$3-5K/mo ($36-60K/yr).</td>
+    <td>~$36-60K/yr cost overstatement</td>
+    <td>Trivial</td>
+  </tr>
+  <tr>
+    <td>CRIT-06</td>
+    <td><strong>Deposit double-collection in Cash tab.</strong> Collections may include full revenue shifted by DSO, PLUS the 20% deposit counted separately. Overstates Cash In by 20% of each deal.</td>
+    <td>Cash forecast overstated by 20% of deal values</td>
+    <td>Medium</td>
+  </tr>
+</table>
+
+<h3>High-Severity Gaps</h3>
+<table class="gap-table">
+  <tr><th style="width:8%">ID</th><th>Gap</th><th style="width:15%">Impact</th><th style="width:10%">Effort</th></tr>
+  <tr><td>HIGH-02</td><td>No FX rate input cell. 5+ USD deals use hardcoded *1.35. Cannot update centrally when CAD/USD moves.</td><td>Stale FX rates, manual update burden</td><td>Medium</td></tr>
+  <tr><td>HIGH-03</td><td>Row reference misalignment in AI-generated formulas. Latent until recalculation reveals #REF! errors.</td><td>Unknown until recalculated</td><td>Medium</td></tr>
+  <tr><td>HIGH-04</td><td>$180/hr blended rate unvalidated. Mike questioned it. Drives all revenue capacity calculations.</td><td>Revenue capacity may be off by 10-15%</td><td>Small</td></tr>
+  <tr><td>HIGH-05</td><td>No actuals vs budget comparison. The "fictional numbers" problem. Mike's explicit requirement.</td><td>Cannot answer "did we hit target?"</td><td>Large</td></tr>
+  <tr><td>HIGH-06</td><td>No invoice schedule tab. Mike explicitly wants invoice-to-milestone linking.</td><td>Cash timing unreliable</td><td>Large</td></tr>
+  <tr><td>HIGH-07</td><td>No 13-week cash forecast. Only monthly granularity. #1 CFO Roadmap TO BUILD item.</td><td>Cannot detect cash shortfalls inside 13 weeks</td><td>Large</td></tr>
+  <tr><td>HIGH-08</td><td>Salary Cap formula construction unverifiable. Mike says cap is being exceeded monthly. Decision-critical.</td><td>Hiring/firing decisions on unreliable data</td><td>Small</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 4. SCORECARD-TO-MODEL GAP MATRIX                              -->
+<!-- ============================================================ -->
+<section id="gap-matrix" class="page-break">
+<h2 class="section-title">4. Scorecard-to-Model Gap Matrix</h2>
+<p>Every scorecard requirement mapped to current model capability. Of 45 requirements, <strong>0 are fully met</strong>, 7 are partially addressed structurally, and 38 are unmet or blocked.</p>
+
+<table>
+  <tr>
+    <th style="width:22%">Requirement</th>
+    <th style="width:10%">Model Status</th>
+    <th style="width:25%">Gap</th>
+    <th style="width:18%">Data Source Needed</th>
+    <th style="width:8%">Priority</th>
+    <th style="width:8%">Effort</th>
+  </tr>
+  <!-- GATE ZERO -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>Gate Zero: CEO 4-Question Test</strong></td></tr>
+  <tr>
+    <td>Answer 4 questions in &lt;5 min, no spreadsheet</td>
+    <td><span class="badge badge-red">FAIL</span></td>
+    <td>Model IS a spreadsheet. Formulas return None. No actuals. No automated delivery.</td>
+    <td>QB (actuals), Plaid (cash), automated email/dashboard</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Large</td>
+  </tr>
+  <!-- 1A: REPORTING RHYTHM -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>1A. Reporting Rhythm</strong></td></tr>
+  <tr>
+    <td>Daily cash email (by 9 AM)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No daily granularity, no automation, no email delivery</td>
+    <td>Plaid (balance), QB (pending), Gmail API</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Weekly ops snapshot (Monday, 6 metrics)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No weekly snapshot, 6 metrics undefined, no automation</td>
+    <td>QB, Teamwork, Plaid, Atio, model</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>Monthly close (rolling-12 P&L by 5th)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Plan tab has P&L structure but no actuals, no rolling-12, no close process</td>
+    <td>QB (P&L actuals)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Quarterly reforecast with scenarios</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Single-scenario forward plan only. No scenario toggle, no actuals to base reforecast on.</td>
+    <td>QB (quarterly actuals), Atio (pipeline)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <!-- 1B: CASH AND COLLECTIONS -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>1B. Cash and Collections</strong></td></tr>
+  <tr>
+    <td>13-week cash forecast</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Monthly granularity only. No weekly view. #1 TO BUILD item.</td>
+    <td>Plaid, QB (AR/AP), payroll calendar</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>Invoicing completeness (&lt;3 biz days)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No invoice schedule. No trigger event tracking. No SLA measurement.</td>
+    <td>Teamwork (milestones), QB (invoices)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>AR aging cadence</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No AR data in model. DSO Target exists (30 days) but no actual aging brackets.</td>
+    <td>QB (AR aging report)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Tax reserve (quarterly)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>40% rate in Setup, Cash tab has reserve line. But: rate may be too high, base unclear, no actuals.</td>
+    <td>QB (actual profit), accountant guidance</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- 1C: COST GOVERNANCE -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>1C. Cost Governance</strong></td></tr>
+  <tr>
+    <td>Salary cap tracking (pre-hire)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Salary Cap formula exists in Plan tab but returns None. No pre-hire calculator. No automated gate.</td>
+    <td>Model (once fixed), QB (actual payroll)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Software/vendor spend governance</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>COGS Tools + SGA Tools tracked at baseline. No variance, no audit, no renewal calendar.</td>
+    <td>QB (actual software spend), vendor contracts</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Budget setup at SOW (&lt;3 biz days)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No connection to PM tool. No SOW-to-project setup workflow.</td>
+    <td>Teamwork (project setup)</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- 1D: SYSTEMS -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>1D. Systems and Access</strong></td></tr>
+  <tr>
+    <td>Systems provisioning (Day-1 / 24h exit)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Outside model scope. No checklist. Process gap, not model gap.</td>
+    <td>HR/IT systems</td>
+    <td><span class="badge badge-gray">LOW</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Payroll (on time, zero errors)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Model tracks payroll costs but not execution. Presumably operational via payroll provider.</td>
+    <td>Payroll provider</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Trivial</td>
+  </tr>
+  <tr>
+    <td>AP management (on terms, no late fees)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No AP tracking in model. Expenses are static monthly amounts.</td>
+    <td>QB (AP aging)</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- 2A: PROFIT VISIBILITY -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>2A. Profit and Revenue Visibility</strong></td></tr>
+  <tr>
+    <td>Pretax profit % vs commitment</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Plan tab has structure. Returns None. Conflicting targets (10% vs 30%). No actuals.</td>
+    <td>QB (actual P&L)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Sales target attainment</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Revenue tab shows forecast vs required. No actual bookings. No CRM integration.</td>
+    <td>Atio CRM (bookings)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Revenue forecast accuracy</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No actuals to compare. No forecast versioning. Cannot measure accuracy.</td>
+    <td>QB (actual revenue), archived forecasts</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Medium</td>
+  </tr>
+  <!-- 2B: OPERATIONAL HEALTH -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>2B. Operational Health Visibility</strong></td></tr>
+  <tr>
+    <td>LER trend</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>LER computed (wrong formula) monthly as forecast. No actuals. No trend. Returns None.</td>
+    <td>QB (gross profit, labor costs)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Billable utilization (blended + per-level)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Targets exist in People tab. No actual hours tracked. No PSA integration.</td>
+    <td>Teamwork (time entries)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Time tracking compliance</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No time tracking data at all.</td>
+    <td>Teamwork (timesheet submissions)</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Project burn variance (75% / 90%)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No project-level budget vs actual. No alerting.</td>
+    <td>Teamwork (project budgets, hours)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Milestone adherence</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No milestone tracking. Pipeline has deal durations but no milestone definitions.</td>
+    <td>Teamwork (milestones)</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- 2C: STRATEGIC RISK -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>2C. Strategic Risk Visibility</strong></td></tr>
+  <tr>
+    <td>Client concentration</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No client-level aggregation. Pipeline has deal data but no concentration metric.</td>
+    <td>QB (revenue by client)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Per-client profitability (quarterly)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No cost attribution per client. Aggregate P&L only.</td>
+    <td>Teamwork (hours by client), QB (revenue)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>Backlog coverage (weeks vs break-even)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Pipeline Coverage % exists (related concept). No break-even calc. No weeks metric.</td>
+    <td>Atio (signed deals), QB (revenue recognized)</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- CAT 3: ESCALATION -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>Category 3: Escalation Triggers (all 8)</strong></td></tr>
+  <tr>
+    <td>Core capital &lt; 2 months &rarr; CEO same day</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Scorecard checks Cash Health but returns None. No automation. No daily monitoring.</td>
+    <td>Plaid (balance), model (opex)</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Cash shortfall inside 13 weeks &rarr; CEO same day</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No 13-week forecast exists. Completely blocked.</td>
+    <td>13-week forecast (once built)</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>LER below threshold &rarr; monthly close</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>LER formula is wrong and returns None. No automated flagging.</td>
+    <td>QB (actuals for LER)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Profit below floor &rarr; monthly close</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Returns None. No actuals. No quarterly tracking.</td>
+    <td>QB (actual P&L)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Project burn 75%/90% &rarr; Delivery/CEO</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No project-level burn tracking.</td>
+    <td>Teamwork (budgets, hours)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Salary cap breach &rarr; before the offer</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Salary Cap returns None. No pre-offer workflow integration.</td>
+    <td>Model (once fixed), QB (payroll)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Client concentration threshold &rarr; monthly close</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Metric not computed anywhere.</td>
+    <td>QB (revenue by client)</td>
+    <td><span class="badge badge-yellow">MED</span></td>
+    <td>Small</td>
+  </tr>
+  <tr>
+    <td>Invoice &gt; 60 days &rarr; aging brackets</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No AR data in model whatsoever.</td>
+    <td>QB (AR aging)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- CAT 4: MATURITY -->
+  <tr style="background:#f4ecf7;"><td colspan="6"><strong>Category 4: Operational Maturity</strong></td></tr>
+  <tr>
+    <td>Report automation</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Zero automation. Static Excel with uncalculated formulas.</td>
+    <td>Automation platform (scripts, GitHub Actions)</td>
+    <td><span class="badge badge-red">HIGH</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>Process documentation</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>CFO Roadmap tab provides partial guide. No runbooks, no step-by-step procedures.</td>
+    <td>Internal knowledge</td>
+    <td><span class="badge badge-gray">LOW</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Data quality</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>6 critical formula defects, stale inputs, no validation. Model produces no reliable output.</td>
+    <td>Model fixes + reconciliation</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Key-person redundancy (vacation test)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No documentation of who does what. No backup assignments.</td>
+    <td>Org knowledge</td>
+    <td><span class="badge badge-gray">LOW</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Operational leverage (rev growth vs headcount)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Revenue per FTE exists in Plan tab. Returns None. No trend. No actuals.</td>
+    <td>QB (revenue), People tab (headcount)</td>
+    <td><span class="badge badge-gray">LOW</span></td>
+    <td>Small</td>
+  </tr>
+  <!-- PROTECTED FLOOR -->
+  <tr style="background:#fdecea;"><td colspan="6"><strong>Protected Floor (Never Stops, Never Degrades)</strong></td></tr>
+  <tr>
+    <td>Daily cash email</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Does not exist in any form.</td>
+    <td>Plaid, QB, Gmail API</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Weekly ops snapshot</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Does not exist in any form.</td>
+    <td>All sources</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>Monthly close by the 5th</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>No close process defined.</td>
+    <td>QB, model</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Medium</td>
+  </tr>
+  <tr>
+    <td>Escalation triggers (all 8)</td>
+    <td><span class="badge badge-red">ABSENT</span></td>
+    <td>Zero triggers operational.</td>
+    <td>All sources</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Large</td>
+  </tr>
+  <tr>
+    <td>Payroll (on time, zero errors)</td>
+    <td><span class="badge badge-yellow">PARTIAL</span></td>
+    <td>Presumably operational via payroll provider. Not tracked by the model.</td>
+    <td>Payroll provider</td>
+    <td><span class="badge badge-red">CRIT</span></td>
+    <td>Trivial</td>
+  </tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5. DATA FLOW ARCHITECTURE                                     -->
+<!-- ============================================================ -->
+<section id="data-flow" class="page-break">
+<h2 class="section-title">5. Data Flow Architecture</h2>
+
+<div class="callout callout-info">
+<strong>Governing Principle:</strong> Deterministic scripts compute every number. LLMs only interpret and narrate. If a number is wrong, it is a bug in a script -- never an AI hallucination. This principle is non-negotiable per CEO mandate.
+</div>
+
+<h3>Architecture Diagram</h3>
+<div class="flow-diagram">
+  <div class="flow-layer">
+    <div class="flow-label">L1<br>COLLECT</div>
+    <div class="flow-content">
+      <strong>Data Sources &rarr; Timestamped Snapshots</strong><br>
+      <strong>QuickBooks</strong> (daily 6:00 AM: balances, AR/AP; weekly: full GL; monthly: P&L close) &bull;
+      <strong>Atio CRM</strong> (daily 6:15 AM: pipeline, deals, stages; webhook: Won/Lost events) &bull;
+      <strong>Teamwork</strong> (daily 6:30 AM: time entries, budgets, milestones; weekly: utilization, compliance) &bull;
+      <strong>Plaid</strong> (daily 5:45 AM: bank balances -- runs first, fastest API) &bull;
+      <strong>Manual Inputs</strong> (on-change via PR: people.yaml, expenses.yaml, scenarios.yaml, invoice-schedule.yaml, fx-rates.yaml)<br>
+      <em>Output: snapshots/{source}/YYYY-MM-DD.yaml committed to Git. Each snapshot carries freshness metadata.</em>
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L2<br>TRANSFORM</div>
+    <div class="flow-content">
+      <strong>Normalize &rarr; Categorize &rarr; Validate</strong><br>
+      Currency conversion (USD &rarr; CAD via config/fx-rates.yaml) &bull; Date normalization to ISO 8601 &bull; Expense categorization via category-map.yaml &bull; Schema validation (pydantic) &bull; Cross-source reconciliation (Plaid balance vs QB balance within $500 tolerance) &bull; Staleness check (&gt;24h for daily sources flagged)<br>
+      <em>Runs immediately after L1. Pure function -- deterministic, no external calls. &lt;10 seconds.</em>
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L3<br>STORE</div>
+    <div class="flow-content">
+      <strong>GitHub Repository = Determinism Boundary</strong><br>
+      <code>makro-finops/</code> repo: <code>snapshots/</code> (raw + normalized), <code>computed/</code> (derived metrics), <code>reports/</code> (generated HTML), <code>model/</code> (Excel file via Git LFS). Same commit = same output. Git history = audit trail. Branch protection on main for manual input changes (requires PR review by Rahul).<br>
+      <em>Retention: daily snapshots 90 days, monthly snapshots indefinitely, computed outputs indefinitely.</em>
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L4<br>MODEL</div>
+    <div class="flow-content">
+      <strong>Excel = Presentation Layer + Scenario Sandbox</strong><br>
+      Python <code>model-writer.py</code> writes computed values directly into cells via openpyxl (values, not formulas). The Excel file is NOT the computation engine. 12 tabs: original 9 + Invoice Schedule + 13-Week Cash + Actuals vs Budget. Cell-to-source mapping in <code>config/cell-map.yaml</code>.<br>
+      <em>Daily: Revenue, Plan, Cash, Scorecard updated. Weekly: 13-Week Cash refreshed. Monthly: all tabs, Actuals populated.</em>
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L5<br>ANALYZE</div>
+    <div class="flow-content">
+      <strong>Sub-layer A (Deterministic):</strong> Python scripts compute every metric: LER (corrected Crabtree), margins, salary cap, cash runway, DSO, utilization, project burn, pipeline coverage, overhead ratio, 13-week forecast, per-client profitability. Same input = same output, always.<br>
+      <strong>Sub-layer B (Narrative):</strong> Claude agent receives computed JSON (after Presidio redaction), generates human-readable commentary. LLM NEVER computes a number -- it reads pre-computed numbers and writes prose. Redaction: client names &rarr; tokens, invoice numbers stripped, amounts above threshold generalized.
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L6<br>REPORT</div>
+    <div class="flow-content">
+      <strong>4 Cadences &rarr; Multi-Channel Delivery</strong><br>
+      <strong>Daily 9 AM:</strong> Cash position email (Plaid balance, runway, inflows/outflows, alerts). Via Gmail API + Slack #ops-finance.<br>
+      <strong>Weekly Monday 10 AM:</strong> Ops snapshot (6 metrics: Cash Runway, Utilization, Pipeline Coverage, Project Burn, AR Aging, Revenue Gap). Via Slack.<br>
+      <strong>Monthly by 5th:</strong> Rolling-12 P&L, actuals vs budget, full KPI scorecard, client profitability. Via email + Notion + GitHub Pages.<br>
+      <strong>Quarterly weeks 1-2:</strong> Reforecast with 3 scenarios, client concentration, software audit, capacity outlook.<br>
+      <em>All reports are self-contained HTML (Makro template), password-protected on GitHub Pages via StatiCrypt.</em>
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L7<br>ALERT</div>
+    <div class="flow-content">
+      <strong>Threshold Engine &rarr; Escalation Router</strong><br>
+      Config-driven thresholds evaluated after every computation run. No LLM involvement in alert decisions. <strong>CRITICAL</strong> (CEO same-day via Slack DM): cash &lt; 2mo opex, 13-week shortfall. <strong>HIGH</strong> (within 24h): project burn 75%/90%, LER &lt; 1.80, invoice &gt; 60 days. Alert deduplication: unique key per metric+entity, 24h cooldown (critical) / 7d (high). Active alerts tracked in <code>computed/alerts/active.yaml</code>.
+    </div>
+  </div>
+  <div class="flow-arrow">&darr;</div>
+  <div class="flow-layer">
+    <div class="flow-label">L8<br>RECONCILE</div>
+    <div class="flow-content">
+      <strong>Actuals vs Forecast &rarr; Variance &rarr; Forecast Adjustment</strong><br>
+      <strong>Monthly P&L:</strong> QB actuals vs Plan tab forecast, per line item. Material threshold: &gt;10% or &gt;$5K.<br>
+      <strong>Weekly Cash:</strong> Plaid actual vs Cash tab projected. Decomposed: timing / amount / missing.<br>
+      <strong>Quarterly Pipeline:</strong> Atio actual deal outcomes vs probability-weighted forecast. Rolling 6-month accuracy.<br>
+      <em>Claude agent explains material variances in plain language. Recommendations feed back to manual inputs for next cycle. Rahul reviews and decides which adjustments to implement.</em>
+    </div>
+  </div>
+</div>
+
+<h3>Graceful Degradation</h3>
+<p>Every data snapshot carries freshness metadata (<code>source</code>, <code>timestamp</code>, <code>staleness_seconds</code>). If a source is unreachable, the pipeline falls back to the last-known-good snapshot with a staleness flag on all downstream reports. Protected Floor items (daily cash email, weekly ops snapshot, monthly close, escalation triggers, payroll) <strong>ship even when degraded</strong> -- they never fail silently. Primary/fallback sources: Plaid (primary for cash) &rarr; QB (fallback) &rarr; last-known-good (last resort).</p>
+
+<h3>What the Architecture Does NOT Cover</h3>
+<ul>
+  <li>Model-internal formula remediation (CRIT-01 through CRIT-06, HIGH-03). Those are a separate model-fix workstream in Week 1.</li>
+  <li>Teamwork migration change management, contractor classification audit, insurance review, process documentation authoring. Those are operational projects that consume outputs from this system.</li>
+</ul>
+
+<h4>System Architecture</h4>
+<div class="mermaid">
+graph TD
+    subgraph Sources["DATA SOURCES"]
+        QB["QuickBooks<br/>Actuals, AR/AP, Bank"]
+        AT["Atio CRM<br/>Pipeline, Deals"]
+        TW["Teamwork<br/>Projects, Time, Milestones"]
+        PL["Plaid<br/>Bank Balances"]
+        MN["Manual Inputs<br/>People, Expenses, Scenarios"]
+    end
+
+    subgraph Collection["L1: COLLECTION"]
+        QBC["QB Extractor"]
+        ATC["Atio Extractor"]
+        TWC["Teamwork Extractor"]
+        PLC["Plaid Extractor"]
+    end
+
+    subgraph Transform["L2: TRANSFORM"]
+        NRM["Normalizer"]
+        FX["FX Converter"]
+        CAT["Categorizer"]
+        VAL["Validator"]
+    end
+
+    subgraph Storage["L3: STORAGE — GitHub Repo"]
+        RAW["snapshots/<br/>Raw + Normalized YAML"]
+        COMP["computed/<br/>Derived Metrics"]
+        MOD["model/<br/>Financial Model"]
+    end
+
+    subgraph Analysis["L4: ANALYSIS"]
+        MET["Metric Engine<br/>LER, Margins, Caps"]
+        THR["Threshold Engine<br/>Green / Yellow / Red"]
+        REC["Reconciler<br/>Actuals vs Forecast"]
+    end
+
+    subgraph Output["L5: OUTPUT"]
+        RPT["Reports<br/>HTML / Slack / Email"]
+        ALR["Alerts<br/>Slack DM to CEO"]
+        DSH["Dashboard<br/>4 CEO Questions"]
+    end
+
+    QB --> QBC
+    AT --> ATC
+    TW --> TWC
+    PL --> PLC
+    MN --> MOD
+
+    QBC --> NRM
+    ATC --> NRM
+    TWC --> NRM
+    PLC --> NRM
+    NRM --> FX --> CAT --> VAL
+
+    VAL --> RAW
+    RAW --> MET
+    MET --> COMP
+    COMP --> MOD
+
+    MET --> THR
+    THR --> ALR
+    COMP --> REC
+    REC --> MN
+
+    COMP --> RPT
+    COMP --> DSH
+
+    style Sources fill:#e8f4f8,stroke:#003d5c,stroke-width:2px
+    style Collection fill:#f0f7fc,stroke:#003d5c,stroke-width:1px
+    style Transform fill:#f0f7fc,stroke:#003d5c,stroke-width:1px
+    style Storage fill:#eafaf1,stroke:#1e8449,stroke-width:2px
+    style Analysis fill:#fef9e7,stroke:#d4a017,stroke-width:1px
+    style Output fill:#f4ecf7,stroke:#6c3483,stroke-width:2px
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 5B. END-STATE ARCHITECTURE                                    -->
+<!-- ============================================================ -->
+<section id="end-state" class="page-break">
+<h2 class="section-title">5B. End-State Architecture: Where Does the Data Live?</h2>
+
+<div class="callout callout-info">
+<strong>Decision: The Excel model is the bootstrap, not the destination.</strong> Excel cannot be version-controlled, multi-user, API-fed, or CI-tested. The end state is a <strong>GitHub-backed data pipeline</strong> with a <strong>Google Sheets presentation layer</strong> for human review and an <strong>HTML dashboard</strong> for CEO consumption.
+</div>
+
+<h3>Why Not Excel Long-Term?</h3>
+<table>
+  <tr><th>Concern</th><th>Excel</th><th>Google Sheets + GitHub Pipeline</th></tr>
+  <tr>
+    <td>Version control</td>
+    <td>Binary file, Git diffs meaningless</td>
+    <td>YAML snapshots in Git = full audit trail. Sheets has built-in revision history.</td>
+  </tr>
+  <tr>
+    <td>Multi-user</td>
+    <td>One person at a time. Merge conflicts.</td>
+    <td>Sheets = real-time collaboration. Pipeline writes to specific cells via API.</td>
+  </tr>
+  <tr>
+    <td>API integration</td>
+    <td>openpyxl writes, but no live connection</td>
+    <td>Google Sheets API: read/write individual cells, ranges, tabs. Native Apps Script for triggers.</td>
+  </tr>
+  <tr>
+    <td>Automation</td>
+    <td>Must open file to recalculate</td>
+    <td>Sheets formulas auto-recalculate. Pipeline pushes actuals via API on schedule.</td>
+  </tr>
+  <tr>
+    <td>Access</td>
+    <td>Desktop only, email attachments</td>
+    <td>Sheets: browser, mobile, shareable link. Dashboard: password-protected URL.</td>
+  </tr>
+  <tr>
+    <td>Reliability</td>
+    <td>AI-generated formulas broke (current state)</td>
+    <td>Pipeline logic in Python scripts (testable, reviewable). Sheets = display layer only.</td>
+  </tr>
+</table>
+
+<h3>End-State Stack</h3>
+<table>
+  <tr><th>Layer</th><th>Technology</th><th>Purpose</th><th>Who Touches It</th></tr>
+  <tr>
+    <td><strong>Source Systems</strong></td>
+    <td>QuickBooks, Atio CRM, Teamwork, Plaid</td>
+    <td>Raw transactional data</td>
+    <td>Jose (QB), Mike (CRM), Delivery team (Teamwork)</td>
+  </tr>
+  <tr>
+    <td><strong>Collection Layer</strong></td>
+    <td>Python extractors + MCP connectors (Claude Code skills)</td>
+    <td>Pull data on schedule (daily/weekly/monthly)</td>
+    <td>Automated. Rahul maintains scripts.</td>
+  </tr>
+  <tr>
+    <td><strong>Storage Layer</strong></td>
+    <td><code>makro-finops</code> GitHub repo (YAML snapshots, computed metrics)</td>
+    <td>Version-controlled canonical data. Every number traceable to a commit.</td>
+    <td>Automated writes. Rahul reviews PRs for manual input changes.</td>
+  </tr>
+  <tr>
+    <td><strong>Computation Layer</strong></td>
+    <td>Python scripts (metric_engine.py, threshold_engine.py, reconciler.py)</td>
+    <td>Deterministic calculations: LER, margins, caps, forecasts. Testable with pytest.</td>
+    <td>Automated. Rahul maintains. Unit tests prevent regression.</td>
+  </tr>
+  <tr>
+    <td><strong>Model Layer</strong></td>
+    <td><strong>Google Sheets</strong> (migrated from Excel)</td>
+    <td>Live financial model. Same 9-tab structure. Formulas in Sheets, actuals pushed via API. Manual inputs (people changes, scenario toggles) entered directly. Auto-recalculates.</td>
+    <td>Rahul (primary), Mike (read + scenario review)</td>
+  </tr>
+  <tr>
+    <td><strong>Reporting Layer</strong></td>
+    <td>HTML reports (generated by Claude Code), Slack messages, Gmail</td>
+    <td>Daily cash email, weekly snapshot, monthly close report</td>
+    <td>Automated delivery. Mike reads.</td>
+  </tr>
+  <tr>
+    <td><strong>Dashboard Layer</strong></td>
+    <td>Password-protected HTML page (Cloudflare Pages or GitHub Pages + StatiCrypt)</td>
+    <td>CEO 4-Question Dashboard. Real-time answers from latest computed metrics. Mobile-friendly.</td>
+    <td>Mike accesses from phone. Auto-updated.</td>
+  </tr>
+  <tr>
+    <td><strong>Alerting Layer</strong></td>
+    <td>Slack DMs via Slack API, email via Gmail API</td>
+    <td>Threshold breaches, escalation triggers, AR aging alerts</td>
+    <td>Automated. Mike + Rahul receive.</td>
+  </tr>
+</table>
+
+<h3>Data Flow: Source to CEO</h3>
+<div class="mermaid">
+graph LR
+    subgraph Sources["Source Systems"]
+        QB["QuickBooks"]
+        CRM["Atio CRM"]
+        TW["Teamwork"]
+        PL["Plaid"]
+    end
+
+    subgraph Pipeline["makro-finops Pipeline"]
+        EXT["Extractors<br/>(Python + MCP)"]
+        YAML["YAML Snapshots<br/>(Git versioned)"]
+        CALC["Computation<br/>(Python scripts)"]
+        COMP["Computed Metrics<br/>(YAML)"]
+    end
+
+    subgraph Outputs["CEO Visibility"]
+        GS["Google Sheets<br/>(Live Model)"]
+        DASH["CEO Dashboard<br/>(HTML, mobile)"]
+        SLACK["Slack Alerts<br/>(Escalations)"]
+        EMAIL["Daily Cash Email"]
+        RPT["Monthly Close<br/>(HTML Report)"]
+    end
+
+    QB --> EXT
+    CRM --> EXT
+    TW --> EXT
+    PL --> EXT
+    EXT --> YAML
+    YAML --> CALC
+    CALC --> COMP
+    COMP --> GS
+    COMP --> DASH
+    COMP --> SLACK
+    COMP --> EMAIL
+    COMP --> RPT
+
+    style Sources fill:#e8f4f8,stroke:#003d5c,stroke-width:2px
+    style Pipeline fill:#eafaf1,stroke:#1e8449,stroke-width:2px
+    style Outputs fill:#f4ecf7,stroke:#6c3483,stroke-width:2px
+</div>
+
+<h3>Migration Path: Excel → Google Sheets</h3>
+<table>
+  <tr><th>Phase</th><th>When</th><th>What Happens</th></tr>
+  <tr>
+    <td><strong>Week 1-2</strong></td>
+    <td>Jun 12-25</td>
+    <td>Fix Excel model. Use it as-is for initial data population and May reconciliation. Excel is the working copy.</td>
+  </tr>
+  <tr>
+    <td><strong>Week 3</strong></td>
+    <td>Jun 26-Jul 2</td>
+    <td>Upload fixed Excel to Google Sheets. Verify all formulas translate (99% compatible). Set up Google Sheets API access. First automated write test.</td>
+  </tr>
+  <tr>
+    <td><strong>Week 4</strong></td>
+    <td>Jul 3-9</td>
+    <td>Google Sheets becomes primary. Pipeline writes actuals to Sheets via API. Excel archived in repo as backup. CEO dashboard reads from computed YAML (not Sheets directly — for speed + offline resilience).</td>
+  </tr>
+  <tr>
+    <td><strong>Month 2+</strong></td>
+    <td>Jul 10+</td>
+    <td>Excel fully retired. Google Sheets = human-facing model. GitHub repo = source of truth for all computed metrics. Dashboard = CEO's daily view.</td>
+  </tr>
+</table>
+
+<h3>Why This Architecture</h3>
+<ul>
+  <li><strong>Deterministic:</strong> Python scripts in Git. Same input YAML = same output. No AI guessing. Testable with pytest. CI catches regressions.</li>
+  <li><strong>Auditable:</strong> Every data pull committed with timestamp. Every manual change is a PR. Git blame traces any number to its source.</li>
+  <li><strong>Resilient:</strong> If Google Sheets is down, pipeline still runs, alerts still fire, dashboard still updates from YAML. If one source is unreachable, staleness flag propagates — reports ship with [STALE] marker, never silently.</li>
+  <li><strong>Delegatable:</strong> Mike's concern: "How do I transfer this to Rahul?" Answer: the knowledge lives in code + config, not in anyone's head. <code>thresholds.yaml</code> is self-documenting. Scripts have docstrings. New hire reads the repo README and understands the system in an hour.</li>
+  <li><strong>Evolvable:</strong> Adding a new metric = add to <code>thresholds.yaml</code> + add formula to <code>metric_engine.py</code> + add column to Sheets. No architectural change.</li>
+</ul>
+</section>
+
+<!-- ============================================================ -->
+<!-- 6. CONTROLS & THRESHOLDS                                      -->
+<!-- ============================================================ -->
+<section id="controls" class="page-break">
+<h2 class="section-title">6. Controls &amp; Thresholds</h2>
+<p>Complete threshold registry for all operational metrics. Every metric has a specific formula, Green/Yellow/Red bands, data source, cadence, owner, and escalation path.</p>
+
+<table>
+  <tr>
+    <th style="width:16%">Metric</th>
+    <th style="width:10%"><span class="tl tl-green"></span> Green</th>
+    <th style="width:12%"><span class="tl tl-yellow"></span> Yellow</th>
+    <th style="width:10%"><span class="tl tl-red"></span> Red</th>
+    <th style="width:14%">Formula</th>
+    <th style="width:10%">Source</th>
+    <th style="width:8%">Cadence</th>
+    <th style="width:10%">Owner</th>
+    <th style="width:10%">Escalation</th>
+  </tr>
+  <tr>
+    <td><strong>Pretax Profit %</strong></td>
+    <td>&ge; 15%</td>
+    <td>10 - 14.9%</td>
+    <td>&lt; 10%</td>
+    <td>(Revenue - Total Costs) / Revenue</td>
+    <td>QB actuals + model forecast</td>
+    <td>Monthly; weekly estimate</td>
+    <td>Rahul</td>
+    <td>Red: CEO same day + root cause</td>
+  </tr>
+  <tr>
+    <td><strong>LER</strong></td>
+    <td>&ge; 2.0</td>
+    <td>1.80 - 1.99</td>
+    <td>&lt; 1.80</td>
+    <td>(Revenue - Pass-Throughs) / Direct Labor</td>
+    <td>QB + model</td>
+    <td>Monthly + 6mo trend</td>
+    <td>Rahul</td>
+    <td>Red 2 months: workforce review</td>
+  </tr>
+  <tr>
+    <td><strong>Gross Margin %</strong></td>
+    <td>&ge; 60%</td>
+    <td>50 - 59.9%</td>
+    <td>&lt; 50%</td>
+    <td>(Revenue - Delivery Labor - Burden - COGS) / Revenue</td>
+    <td>QB actuals</td>
+    <td>Monthly</td>
+    <td>Rahul</td>
+    <td>Red: CEO within 24h of close</td>
+  </tr>
+  <tr>
+    <td><strong>Salary Cap Status</strong></td>
+    <td>&le; 95% of cap</td>
+    <td>95.1 - 100%</td>
+    <td>&gt; 100%</td>
+    <td>Actual People Cost / (Rev - 15%*Rev - Non-Labor Costs)</td>
+    <td>QB payroll + model</td>
+    <td>Monthly; pre-hire ad-hoc</td>
+    <td>Rahul</td>
+    <td>Red: no new hires until restored</td>
+  </tr>
+  <tr>
+    <td><strong>DSO</strong></td>
+    <td>&le; 30 days</td>
+    <td>31 - 45 days</td>
+    <td>&gt; 45 days</td>
+    <td>(AR / Revenue) * Days in Period</td>
+    <td>QB (AR aging)</td>
+    <td>Weekly + monthly</td>
+    <td>Jose + Rahul</td>
+    <td>Red: CEO + overdue invoice list</td>
+  </tr>
+  <tr>
+    <td><strong>AR Aging</strong></td>
+    <td>No invoices &gt;60d; AR &lt;15% monthly rev</td>
+    <td>Any 31-60d or AR 15-25%</td>
+    <td>Any &gt;60d or AR &gt;25%</td>
+    <td>Invoice count + $ by aging bucket</td>
+    <td>QB (AR aging)</td>
+    <td>Weekly (Mon)</td>
+    <td>Jose (action) + Rahul (monitor)</td>
+    <td>60+ days: CEO call within 48h</td>
+  </tr>
+  <tr>
+    <td><strong>Cash Runway</strong></td>
+    <td>&ge; 3 months</td>
+    <td>2 - 2.99 months</td>
+    <td>&lt; 2 months</td>
+    <td>Cash Balance / Monthly OpEx (trailing 3mo avg)</td>
+    <td>Plaid + QB</td>
+    <td>Daily email; weekly formal</td>
+    <td>Rahul</td>
+    <td>Red: CEO same day, spending freeze</td>
+  </tr>
+  <tr>
+    <td><strong>Utilization (Blended)</strong></td>
+    <td>70 - 80%</td>
+    <td>65-69.9% or &gt;85%</td>
+    <td>&lt;65% or &gt;90%</td>
+    <td>Billable Hours / Available Hours</td>
+    <td>Teamwork</td>
+    <td>Weekly + monthly</td>
+    <td>Rahul + Delivery Lead</td>
+    <td>Red-low: CEO at weekly. Red-high: redistribute 48h</td>
+  </tr>
+  <tr>
+    <td><strong>Utilization (Senior)</strong></td>
+    <td>70 - 80% (target 75%)</td>
+    <td>60-69.9% or &gt;85%</td>
+    <td>&lt;60% or &gt;90%</td>
+    <td>Senior Billable Hours / Senior Available Hours</td>
+    <td>Teamwork</td>
+    <td>Monthly</td>
+    <td>Rahul</td>
+    <td>Red: CEO at monthly close</td>
+  </tr>
+  <tr>
+    <td><strong>Utilization (Mid)</strong></td>
+    <td>75 - 85% (target 80%)</td>
+    <td>65-74.9% or &gt;87%</td>
+    <td>&lt;65% or &gt;90%</td>
+    <td>Mid Billable Hours / Mid Available Hours</td>
+    <td>Teamwork</td>
+    <td>Monthly</td>
+    <td>Rahul</td>
+    <td>Red: CEO at monthly close</td>
+  </tr>
+  <tr>
+    <td><strong>Utilization (Junior)</strong></td>
+    <td>80 - 90% (target 90%)</td>
+    <td>70-79.9% or &gt;92%</td>
+    <td>&lt;70% or &gt;95%</td>
+    <td>Junior Billable Hours / Junior Available Hours</td>
+    <td>Teamwork</td>
+    <td>Monthly</td>
+    <td>Rahul</td>
+    <td>Red: CEO at monthly close</td>
+  </tr>
+  <tr>
+    <td><strong>Revenue per FTE</strong></td>
+    <td>&ge; $150K/yr</td>
+    <td>$120-149K/yr</td>
+    <td>&lt; $120K/yr</td>
+    <td>Trailing 12mo Revenue / Avg Total FTE</td>
+    <td>QB + People tab</td>
+    <td>Monthly + quarterly trend</td>
+    <td>Rahul</td>
+    <td>Red: root cause analysis within 5 days</td>
+  </tr>
+  <tr>
+    <td><strong>Client Concentration</strong></td>
+    <td>Top 1 &lt;15%, Top 3 &lt;40%</td>
+    <td>Top 1 15-25% or Top 3 40-50%</td>
+    <td>Top 1 &gt;25% or Top 3 &gt;50%</td>
+    <td>Client Rev / Total Rev (trailing 3mo)</td>
+    <td>QB (rev by client)</td>
+    <td>Monthly + quarterly deep</td>
+    <td>Rahul</td>
+    <td>Red: diversification plan 10 days</td>
+  </tr>
+  <tr>
+    <td><strong>Per-Client Margin</strong></td>
+    <td>&ge; 55%</td>
+    <td>40 - 54.9%</td>
+    <td>&lt; 40%</td>
+    <td>(Client Rev - Client Direct Costs) / Client Rev</td>
+    <td>Teamwork + QB</td>
+    <td>Quarterly ranked; monthly top 5</td>
+    <td>Rahul</td>
+    <td>Red: improvement plan or termination rec</td>
+  </tr>
+  <tr>
+    <td><strong>Pipeline Coverage</strong></td>
+    <td>&ge; 100%</td>
+    <td>80 - 99.9%</td>
+    <td>&lt; 80%</td>
+    <td>(Booked + Weighted Pipeline) / Required Revenue</td>
+    <td>Atio CRM + model</td>
+    <td>Weekly + monthly</td>
+    <td>Rahul</td>
+    <td>Red 2+ weeks: emergency sales session</td>
+  </tr>
+  <tr>
+    <td><strong>Revenue Gap</strong></td>
+    <td>Gap &le; $0</td>
+    <td>Gap $1-25K/mo</td>
+    <td>Gap &gt; $25K/mo</td>
+    <td>Required Revenue - (Booked + Weighted Pipeline)</td>
+    <td>Atio + QB + model</td>
+    <td>Weekly + monthly</td>
+    <td>Rahul</td>
+    <td>Red: CEO sales action plan 48h</td>
+  </tr>
+  <tr>
+    <td><strong>Project Burn %</strong></td>
+    <td>&le;50% or proportional</td>
+    <td>&ge; 75% budget consumed</td>
+    <td>&ge; 90% budget consumed</td>
+    <td>Hours Logged / Budget Hours</td>
+    <td>Teamwork</td>
+    <td>Weekly + daily threshold check</td>
+    <td>Rahul + Delivery Lead</td>
+    <td>75%: Delivery 24h. 90%: CEO same day</td>
+  </tr>
+  <tr>
+    <td><strong>Milestone Adherence</strong></td>
+    <td>&ge; 85%</td>
+    <td>70 - 84.9%</td>
+    <td>&lt; 70%</td>
+    <td>On-Time Milestones / Total Due</td>
+    <td>Teamwork</td>
+    <td>Weekly + monthly</td>
+    <td>Delivery Lead</td>
+    <td>Red: CEO weekly review, systemic cause analysis</td>
+  </tr>
+  <tr>
+    <td><strong>Software Spend %</strong></td>
+    <td>&le; 5% revenue</td>
+    <td>5.1 - 8%</td>
+    <td>&gt; 8%</td>
+    <td>(COGS Tools + SGA Tools) / Revenue</td>
+    <td>QB + Expenses tab</td>
+    <td>Monthly + quarterly audit</td>
+    <td>Rahul</td>
+    <td>Red: mandatory audit within 10 days</td>
+  </tr>
+  <tr>
+    <td><strong>Overhead Ratio</strong></td>
+    <td>&le; 30%</td>
+    <td>30.1 - 35%</td>
+    <td>&gt; 35%</td>
+    <td>Non-Delivery Costs / Revenue</td>
+    <td>QB + model</td>
+    <td>Monthly</td>
+    <td>Rahul</td>
+    <td>Red: cost reduction plan 10 days</td>
+  </tr>
+  <tr>
+    <td><strong>Time Tracking Compliance</strong></td>
+    <td>&ge; 95%</td>
+    <td>85 - 94.9%</td>
+    <td>&lt; 85%</td>
+    <td>Entries Submitted On Time / Expected Entries</td>
+    <td>Teamwork</td>
+    <td>Weekly + monthly</td>
+    <td>Rahul + Delivery Lead</td>
+    <td>Red 3+ weeks: formal performance conversation</td>
+  </tr>
+  <tr>
+    <td><strong>Backlog Coverage</strong></td>
+    <td>&ge; 8 weeks</td>
+    <td>6 - 7.9 weeks</td>
+    <td>&lt; 6 weeks</td>
+    <td>Signed Undelivered Hours / Weekly Capacity</td>
+    <td>Atio + Teamwork</td>
+    <td>Weekly + monthly</td>
+    <td>Rahul</td>
+    <td>&lt;4 weeks: hiring freeze + expense reduction</td>
+  </tr>
+  <tr>
+    <td><strong>Invoicing Completeness</strong></td>
+    <td>100%</td>
+    <td>90 - 99%</td>
+    <td>&lt; 90%</td>
+    <td>Invoices Sent &le;3 days / Total Triggers</td>
+    <td>QB + Teamwork</td>
+    <td>Weekly + monthly</td>
+    <td>Jose + Rahul</td>
+    <td>Red: process audit within 5 days</td>
+  </tr>
+  <tr>
+    <td><strong>13-Week Forecast Accuracy</strong></td>
+    <td>&ge; 90% at 2wk</td>
+    <td>80 - 89.9% at 2wk</td>
+    <td>&lt; 80% at 2wk</td>
+    <td>1 - |Forecast - Actual| / Actual</td>
+    <td>Model forecast + Plaid actual</td>
+    <td>Weekly check; monthly trend</td>
+    <td>Rahul</td>
+    <td>Red 3+ weeks: methodology review</td>
+  </tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 7. RHYTHM CHECKLISTS                                          -->
+<!-- ============================================================ -->
+<section id="rhythms" class="page-break">
+<h2 class="section-title">7. Rhythm Checklists</h2>
+
+<h3>Daily (Every Business Day)</h3>
+<table class="checklist">
+  <tr><th>Task</th><th>Owner</th><th>Due</th><th>Input</th><th>Output</th><th>Quality Gate</th></tr>
+  <tr>
+    <td><strong>Cash Position Email</strong><br><span class="badge badge-purple">PROTECTED FLOOR</span></td>
+    <td>Rahul (automated)</td>
+    <td>9:00 AM ET</td>
+    <td>Plaid (balance), QB (pending deposits/payments)</td>
+    <td>Email to Mike: current balance, runway (months), expected in/out this week, Core Capital status, one-line verdict "Are we good? [YES/NO]"</td>
+    <td>Arrives by 9 AM. Balance matches Plaid to the penny. If Plaid down: send with [STALE DATA] flag using last-known balance. Never skipped.</td>
+  </tr>
+  <tr>
+    <td><strong>Project Burn Threshold Check</strong></td>
+    <td>Rahul (automated)</td>
+    <td>9:30 AM ET</td>
+    <td>Teamwork (hours vs budget per project)</td>
+    <td>Slack alert to Delivery Lead at 75%. Slack DM to CEO at 90%. Includes: project name, burn %, hours remaining, remaining deliverables.</td>
+    <td>Every active budgeted project checked. No project crosses 75% or 90% without alert within 24h.</td>
+  </tr>
+  <tr>
+    <td><strong>AR Aging Quick Scan</strong></td>
+    <td>Jose (review); Rahul (monitor)</td>
+    <td>10:00 AM ET</td>
+    <td>QB (AR aging report)</td>
+    <td>Jose sends follow-up on any invoice 31+ days. Flags any invoice at 55+ days to Rahul for CEO escalation prep.</td>
+    <td>No invoice crosses 60 days without prior action. Jose logs follow-up in QB notes.</td>
+  </tr>
+</table>
+
+<h3>Weekly (Every Monday)</h3>
+<table class="checklist">
+  <tr><th>Task</th><th>Owner</th><th>Due</th><th>Input</th><th>Output</th><th>Quality Gate</th></tr>
+  <tr>
+    <td><strong>Ops Snapshot (6 Metrics)</strong><br><span class="badge badge-purple">PROTECTED FLOOR</span></td>
+    <td>Rahul</td>
+    <td>10:00 AM ET</td>
+    <td>Teamwork, QB, Plaid, Atio, model</td>
+    <td>Slack message / brief doc to CEO with 6 metrics (Green/Yellow/Red): (1) Cash Runway, (2) Blended Utilization, (3) Pipeline Coverage, (4) Project Burn Summary, (5) AR Aging Summary, (6) Revenue Gap. Each: current value, prior week, trend arrow, one-line commentary if Yellow/Red.</td>
+    <td>All 6 metrics present with current-week data. No metric uses data older than 5 business days. If source unavailable: [ESTIMATED] with last-known value.</td>
+  </tr>
+  <tr>
+    <td><strong>AR Aging Formal Review</strong></td>
+    <td>Jose (collection); Rahul (completeness)</td>
+    <td>Jose: Tue 12 PM. Rahul: Tue 5 PM.</td>
+    <td>QB (full AR aging, invoice detail)</td>
+    <td>Updated AR tracker: every invoice &gt;30d with last contact, next action, expected resolution. Summary: total overdue $, count by bracket, week-over-week change.</td>
+    <td>Every invoice &gt;30d has documented follow-up this week. No invoice &gt;60d without CEO notification. AR trending down or explained.</td>
+  </tr>
+  <tr>
+    <td><strong>13-Week Cash Forecast (2-Week Refresh)</strong></td>
+    <td>Rahul</td>
+    <td>2:00 PM ET Monday</td>
+    <td>Plaid (balance), QB (upcoming AR/AP), Atio (expected deposits), Teamwork (upcoming invoice triggers)</td>
+    <td>Updated 2-week forward daily cash forecast. Flags any day below 1 month OpEx. Flags any shortfall inside 13 weeks.</td>
+    <td>Reflects all known events for next 2 weeks (payroll dates, contractor payments, invoice due dates, expected collections). Any projected shortfall triggers CEO same-day notification.</td>
+  </tr>
+  <tr>
+    <td><strong>Project Burn &amp; Milestone Review</strong></td>
+    <td>Rahul (compile); Delivery Lead (respond)</td>
+    <td>11:00 AM ET Monday</td>
+    <td>Teamwork (all active project budgets, hours, milestones)</td>
+    <td>Per-project: burn %, milestone status (on track / at risk / late), estimated vs planned completion. Flags burn % exceeding timeline % by &gt;10 points.</td>
+    <td>Every active budgeted project included. 75%+ burn acknowledged by Delivery Lead within 24h. 90%+ burn: CEO notified same day.</td>
+  </tr>
+  <tr>
+    <td><strong>Time Tracking Compliance</strong></td>
+    <td>Rahul (report); Delivery Lead (follow-up)</td>
+    <td>10:00 AM ET Monday</td>
+    <td>Teamwork (time entry submissions for prior week)</td>
+    <td>Compliance % for prior week. Named individuals who did not submit. Trend vs prior 4 weeks.</td>
+    <td>Non-compliant individuals contacted by Delivery Lead within 24h. 3+ consecutive weeks non-compliance: escalate to Rahul.</td>
+  </tr>
+</table>
+
+<h3>Monthly (By 5th Calendar Day of Following Month)</h3>
+<table class="checklist">
+  <tr><th>Task</th><th>Owner</th><th>Due</th><th>Input</th><th>Output</th><th>Quality Gate</th></tr>
+  <tr>
+    <td><strong>Monthly P&L Close</strong><br><span class="badge badge-purple">PROTECTED FLOOR</span></td>
+    <td>Jose (QB data by 3rd); Rahul (report by 5th)</td>
+    <td>5th calendar day</td>
+    <td>QB (reconciled revenue + expenses), model (forecast)</td>
+    <td>Monthly P&L: revenue, delivery cost, gross margin, OpEx breakdown, pretax profit -- all actual vs forecast with variance $ and %. LER, salary cap status, rolling 12-month trend. 3-5 sentence CEO narrative: "Are we on track?"</td>
+    <td>Every line item reconciles to QB. Variances &gt;10% explained. LER uses corrected Crabtree formula. Salary Cap uses 15% target. CEO confirms receipt within 2 business days.</td>
+  </tr>
+  <tr>
+    <td><strong>13-Week Cash Forecast Full Refresh</strong></td>
+    <td>Rahul</td>
+    <td>7th calendar day</td>
+    <td>QB (actual cash flows for closed month), Plaid (balance), Atio (expected deals), payroll calendar, AP commitments</td>
+    <td>Full 13-week forecast, week by week. Highlights any week below 2 months OpEx. Compares prior month's forecast accuracy at 2-week and 4-week horizons.</td>
+    <td>All 13 weeks populated with specific amounts. Payroll weeks marked with exact amounts. Forecast accuracy from prior month reported.</td>
+  </tr>
+  <tr>
+    <td><strong>Utilization Report (Blended + Per-Level + Per-Person)</strong></td>
+    <td>Rahul</td>
+    <td>5th calendar day</td>
+    <td>Teamwork (time entries), People tab (levels, targets)</td>
+    <td>Blended utilization %. Per-level vs targets (Senior 75%, Mid 80%, Junior 90%). Per-person for anyone &gt;10% off target. Trailing 3-month trend. Theoretical vs realistic capacity.</td>
+    <td>Every billable person accounted for. Per-person data only for outliers. Adjusted for PTO, holidays, new hire ramp.</td>
+  </tr>
+  <tr>
+    <td><strong>Expense Review &amp; Variance</strong></td>
+    <td>Rahul (prepare); Mike (review)</td>
+    <td>7th calendar day</td>
+    <td>QB (actual expenses), model (budgeted), prior month</td>
+    <td>Line-by-line: budget vs actual, $ and % variance, MoM trend. Flags: &gt;10% over budget, new recurring expenses, cancelled subscriptions still charging. Expense ratios vs benchmarks.</td>
+    <td>Reconciles to QB. Recruiting/HR ($7,183/mo) and Bank Fees ($3,195/mo) specifically reviewed.</td>
+  </tr>
+  <tr>
+    <td><strong>Client Profitability (Top 5)</strong></td>
+    <td>Rahul</td>
+    <td>10th calendar day</td>
+    <td>QB (revenue by client), Teamwork (hours by project), People tab (cost rates)</td>
+    <td>Per-client: revenue, direct cost, gross margin $, gross margin %. Comparison to prior month. Flag any client below 40%.</td>
+    <td>Hours attributed to correct client. Cost rates = monthly cost / 160h. Supports Clarius evaluation and similar decisions.</td>
+  </tr>
+  <tr>
+    <td><strong>Salary Cap Check</strong></td>
+    <td>Rahul</td>
+    <td>5th calendar day</td>
+    <td>QB (actual revenue 3mo avg), People tab (total people cost), Expenses tab (non-labor costs)</td>
+    <td>Cap amount, actual people cost, utilization % of cap, headroom or overage. If breached: magnitude and recommended action.</td>
+    <td>Uses corrected formula: Cap = Revenue - 15%*Revenue - Non-Labor Costs. Revenue = trailing 3mo avg. Includes owner $20K/mo.</td>
+  </tr>
+  <tr>
+    <td><strong>Payroll Verification</strong><br><span class="badge badge-purple">PROTECTED FLOOR</span></td>
+    <td>Jose (execute); Rahul (verify)</td>
+    <td>Within 1 biz day of each payroll run</td>
+    <td>Payroll provider reports, QB, People tab</td>
+    <td>Confirmation: all employees paid correct amounts, taxes/deductions correct, QB entries match payroll report, contractor payments on schedule.</td>
+    <td>Zero payroll errors. Discrepancy flagged to CEO within 24h.</td>
+  </tr>
+</table>
+
+<h3>Quarterly (First 2 Weeks of Quarter)</h3>
+<table class="checklist">
+  <tr><th>Task</th><th>Owner</th><th>Due</th><th>Output Summary</th></tr>
+  <tr>
+    <td><strong>Reforecast with 3 Scenarios</strong></td>
+    <td>Rahul (prepare); Mike (approve)</td>
+    <td>Draft end of Week 1; final end of Week 2</td>
+    <td>Updated 6-month forecast: Base (current pipeline + team), Downside (Won only + lose 1 retainer + 1 departure), Upside (pipeline +25% close + 1 new retainer + rate increase). Full P&L through cash for each. Decision recommendations.</td>
+  </tr>
+  <tr>
+    <td><strong>Software &amp; Vendor Audit</strong></td>
+    <td>Rahul (conduct); Mike (approve changes)</td>
+    <td>End of Week 2</td>
+    <td>Complete software inventory: tool, monthly cost, owner, last login, justification, renewal date, cancellation notice. Recommendations for cancellation/consolidation. Savings estimate.</td>
+  </tr>
+  <tr>
+    <td><strong>Client Concentration Deep Review</strong></td>
+    <td>Rahul (analyze); Mike + Sales (review)</td>
+    <td>End of Week 2</td>
+    <td>Revenue by client as % of total (trailing 12mo). Top client trend. Top 3 dependency. Net revenue retention. Revenue mix (project vs retainer). Dollar impact of losing top client.</td>
+  </tr>
+  <tr>
+    <td><strong>Per-Client Profitability (Full Base)</strong></td>
+    <td>Rahul</td>
+    <td>End of Week 2</td>
+    <td>All active clients ranked by gross margin %. Bottom 3 highlighted with improvement or termination analysis.</td>
+  </tr>
+  <tr>
+    <td><strong>Tax Reserve Set-Aside</strong></td>
+    <td>Jose (transfer); Rahul (calculate); Accountant (confirm rate)</td>
+    <td>15th of first month of quarter</td>
+    <td>Transfer = 40% * MAX(0, Pretax Profit for prior quarter) to designated savings account. Memo to CEO.</td>
+  </tr>
+  <tr>
+    <td><strong>Forecast Accuracy Retrospective</strong></td>
+    <td>Rahul</td>
+    <td>End of Week 1</td>
+    <td>Revenue, costs, profit, cash: forecast vs actual, $ and % variance. Systematic biases identified. Methodology improvements for next quarter.</td>
+  </tr>
+</table>
+
+<h3>Annual (January)</h3>
+<table class="checklist">
+  <tr><th>Task</th><th>Owner</th><th>Due</th></tr>
+  <tr><td>Annual Budget &amp; Target Setting</td><td>Rahul (draft); Mike (approve)</td><td>Draft Jan 15; final Jan 31</td></tr>
+  <tr><td>Contractor Classification Risk Review</td><td>Rahul (flag); Mike + legal counsel</td><td>Jan 31</td></tr>
+  <tr><td>Insurance Coverage Review</td><td>Rahul (requirements); Mike + broker</td><td>Feb 15</td></tr>
+  <tr><td>Rate Card &amp; Pricing Review</td><td>Rahul (data); Mike (rates)</td><td>Jan 31</td></tr>
+  <tr><td>Process Documentation Audit</td><td>Rahul</td><td>Feb 28</td></tr>
+  <tr><td>Key-Person Dependency Assessment</td><td>Rahul (assess); Mike (mitigation)</td><td>Jan 31</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 8. ESCALATION PLAYBOOK                                        -->
+<!-- ============================================================ -->
+<section id="escalation" class="page-break">
+<h2 class="section-title">8. Escalation Playbook</h2>
+<p>8 defined triggers. Each with specific condition, detection method, response timeline, notification chain, message format, and follow-up protocol.</p>
+
+<table>
+  <tr>
+    <th style="width:6%">#</th>
+    <th style="width:16%">Trigger</th>
+    <th style="width:16%">Condition</th>
+    <th style="width:10%">Detection</th>
+    <th style="width:10%">Timeline</th>
+    <th style="width:10%">Notify</th>
+    <th style="width:32%">Response &amp; Follow-Up</th>
+  </tr>
+  <tr>
+    <td><strong>3.1</strong></td>
+    <td>Core Capital Below Minimum</td>
+    <td>Cash balance &lt; 2 months of trailing 3-month avg OpEx. E.g., if monthly OpEx = $120K, fires when cash &lt; $240K.</td>
+    <td>Automated daily: cash email script compares Plaid balance vs 2x OpEx</td>
+    <td>CEO same day, within 1 hour. Emergency meeting within 24h. Action plan within 48h.</td>
+    <td>1st: CEO (Slack DM + email). 2nd: Rahul (track resolution).</td>
+    <td>Slack DM includes: current cash, monthly OpEx, runway months, trigger cause, immediate actions (accelerate AR, defer AP, credit line, headcount reduction options). Daily status updates until runway &gt; 2 months for 5 consecutive business days. Post-mortem documenting cause and prevention.</td>
+  </tr>
+  <tr>
+    <td><strong>3.2</strong></td>
+    <td>Cash Shortfall Inside 13 Weeks</td>
+    <td>Any week in 13-week forecast where closing balance &lt; 1 month OpEx, or goes negative.</td>
+    <td>Semi-automated: 13-week forecast reviewed every Monday by 2 PM</td>
+    <td>&lt;4 weeks out: emergency meeting 24h. 5-13 weeks: addressed at weekly review.</td>
+    <td>1st: CEO (Slack DM, urgency proportional to timeline). 2nd: Jose (accelerate collections).</td>
+    <td>Includes: shortfall week, projected balance, gap amount, drivers (payroll, delayed collections, etc.), mitigation options with $ amounts. Daily update for the specific shortfall window until resolved. If persists within 2 weeks: escalate to 3.1 protocol.</td>
+  </tr>
+  <tr>
+    <td><strong>3.3</strong></td>
+    <td>LER Below Threshold</td>
+    <td>Actual monthly LER &lt; 1.80 (using corrected Crabtree formula).</td>
+    <td>Manual calculation at monthly close by 5th calendar day</td>
+    <td>Surfaced in monthly close report. If &lt;1.80: CEO meeting within 3 business days.</td>
+    <td>1st: CEO (monthly close report + separate Slack DM if &lt;1.80). 2nd: Delivery Lead.</td>
+    <td>Dedicated section in close report: current LER, 3-month trend, decomposition (revenue vs labor driver), specific actions to restore (revenue increase $X, or labor reduction of $X = N headcount, or rate increase of $X/hr). If &lt;1.80 for 2 consecutive months: mandatory workforce review within 5 business days. Hiring freeze until LER &gt; 1.80.</td>
+  </tr>
+  <tr>
+    <td><strong>3.4</strong></td>
+    <td>Profit Below Floor for Quarter</td>
+    <td>Quarterly pretax profit &lt; 10%. Also triggers if trailing 3-month pretax is negative.</td>
+    <td>Calculated at monthly close. Quarter-end assessment from 3 monthly actuals.</td>
+    <td>Surfaced in monthly close. If quarter-end &lt;10%: formal quarterly review within first 2 weeks of next quarter.</td>
+    <td>1st: CEO (monthly close + Slack DM at quarter-end). 2nd: All department leads at quarterly review.</td>
+    <td>Quarterly reforecast MUST include a scenario showing path to 15% target. If &lt;10% for 2 consecutive quarters: financial review declared -- all discretionary spending requires CEO pre-approval, hiring freeze, pricing review initiated. Monthly tracking until profit &gt;10% for a full quarter.</td>
+  </tr>
+  <tr>
+    <td><strong>3.5</strong></td>
+    <td>Project Burn at 75% / 90%</td>
+    <td>Any project with defined budget reaches 75% hours consumed (Delivery alert) or 90% (CEO alert).</td>
+    <td>Automated: daily scan of Teamwork budgets by 9:30 AM</td>
+    <td>75%: Delivery Lead notified within 24h, response within 48h. 90%: CEO same day, response within 24h.</td>
+    <td>75%: Delivery Lead (Slack). 90%: CEO (Slack DM) + Delivery Lead.</td>
+    <td>75%: project name, burn %, remaining hours, remaining deliverables, "Can project complete within remaining hours? If not, overrun estimate? Scope change needed?" 90%: adds revenue at risk $, margin erosion $, recommended action (scope freeze / change order / absorb). Post-project: overrun root cause documented (scope creep / bad estimate / rework / client delays).</td>
+  </tr>
+  <tr>
+    <td><strong>3.6</strong></td>
+    <td>Salary Cap Breach (Pre-Hire)</td>
+    <td>People Cost exceeds or would exceed Salary Cap after proposed hire. Also triggers monthly if cap already breached.</td>
+    <td>Proactive: Rahul runs cap check within 1 business day of any hiring discussion. Monthly: calculated at close.</td>
+    <td>Pre-hire: cap data provided before any offer. Monthly breach: surfaced in close report.</td>
+    <td>1st: CEO (receives data before hiring discussion).</td>
+    <td>Pre-hire memo: current cap, current cost, headroom, proposed hire cost, post-hire headroom, revenue required to support hire, break-even timeline. Monthly breach: overage $, consecutive months, options (reduce headcount / increase revenue / accept with justification). No new hires while breached unless CEO provides written justification with restoration timeline.</td>
+  </tr>
+  <tr>
+    <td><strong>3.7</strong></td>
+    <td>Client Concentration Threshold</td>
+    <td>Any single client &gt; 25% of trailing 3-month revenue, or top 3 &gt; 50%.</td>
+    <td>Monthly calculation at close. Quarterly deep review with 12-month trailing data.</td>
+    <td>Surfaced at monthly close. If &gt;35% single client: immediate notification.</td>
+    <td>1st: CEO (monthly close report). 2nd: Sales at quarterly review.</td>
+    <td>Top client % with $ amounts, top 3 combined %, trend, risk assessment (impact if top client stops all work = -$X/mo, -X months runway). If &gt;25%: mandatory diversification plan within 10 business days (2-3 specific new client targets). Monthly tracking until below 25%.</td>
+  </tr>
+  <tr>
+    <td><strong>3.8</strong></td>
+    <td>Invoice Over 60 Days Overdue</td>
+    <td>Any single invoice unpaid &gt;60 days past due date (invoice date + payment terms).</td>
+    <td>Weekly AR aging review (Monday). Daily: Jose scans for 55+ day invoices.</td>
+    <td>60+ days: CEO notified same business day. CEO calls client within 48h. Resolution plan within 5 business days.</td>
+    <td>31-45d: Jose follow-up email. 46-60d: Rahul prepares CEO brief. 60+: CEO (Slack DM).</td>
+    <td>CEO receives: client name, invoice #, amount, days overdue, follow-up history, active work for this client, recommended actions (CEO call, pause new scope, engage collections). If no response within 10 business days of CEO call: formal demand or collections referral. 90+ days: CEO decides write-off or legal within 5 business days. Post-resolution: review client payment terms for future work.</td>
+  </tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 9. BLIND SPOTS                                                -->
+<!-- ============================================================ -->
+<section id="blind-spots" class="page-break">
+<h2 class="section-title">9. Blind Spots</h2>
+<p>Things Mike did not explicitly mention but the system must handle. The ops plan treats the agency as a financial instrument; these gaps address legal exposure, human capital risk, contractual obligations, and growth constraints.</p>
+
+<h3>Critical (Existential Risk)</h3>
+<table>
+  <tr><th style="width:8%">ID</th><th style="width:22%">Blind Spot</th><th>Why It Matters</th><th style="width:25%">Resolution</th><th style="width:8%">Timeline</th></tr>
+  <tr>
+    <td>COMP-01</td>
+    <td><strong>Contractor Misclassification Risk</strong></td>
+    <td>12 of 22 workers are contractors, including core delivery (Nathan, Luis, Nick) and ops (Rahul, Alexis, Jose). If CRA deems them employees: back taxes, CPP/EI, interest, fines. Single audit could cost $150K+. The model treats this as a cost classification, not a legal classification.</td>
+    <td>Month 1: Engage employment lawyer for classification audit (~$3-5K). Month 2: Template independent contractor agreements. Add "Classification Review Date" to People tab. Semi-annual review.</td>
+    <td>Jul 2026</td>
+  </tr>
+  <tr>
+    <td>PEOPLE-01</td>
+    <td><strong>Contractor Retention Risk Unmodeled</strong></td>
+    <td>Core delivery depends on contractors with no benefits, no equity, no commitment. Losing Nathan mid-project could cost 2-3 months productivity + client damage. No flight-risk indicators or retention mechanisms.</td>
+    <td>Month 2: Tag each contractor as Critical/Important/Replaceable. Calculate replacement cost for Critical contractors. Consider retention tools: rate reviews, completion bonuses, first-refusal on projects.</td>
+    <td>Jul 2026</td>
+  </tr>
+  <tr>
+    <td>PEOPLE-02</td>
+    <td><strong>Knowledge Concentration (Bus Factor)</strong></td>
+    <td>Nathan and Luis hold irreplaceable project knowledge. If either leaves mid-engagement on a $150-230K project, there is no documented knowledge transfer. The "vacation test" is mentioned but not defined.</td>
+    <td>Month 2: Audit active projects for bus factor. Month 3: Pair-assignment policy for projects over $50K. Add documentation completeness as a project health metric in Teamwork.</td>
+    <td>Aug 2026</td>
+  </tr>
+  <tr>
+    <td>CLIENT-01</td>
+    <td><strong>Scope Creep Not Measured</strong></td>
+    <td>Directly undermines the profit metric Mike calls the apex. If a $150K project scoped at 800h takes 1,000h, that is $36K in free work -- a 24% margin erosion invisible to the current model. Project burn alerts flag overruns but not the root cause.</td>
+    <td>Month 1: Add "Original Budget Hours" + "Current Budget Hours" to every Teamwork project. Month 2: Lightweight change request process (absorbed or billed). Month 3: "Scope Creep Rate" metric in monthly review.</td>
+    <td>Jul-Aug 2026</td>
+  </tr>
+</table>
+
+<h3>High Severity (Silent Margin Erosion)</h3>
+<table>
+  <tr><th style="width:8%">ID</th><th style="width:22%">Blind Spot</th><th>Why It Matters</th><th style="width:25%">Resolution</th><th style="width:8%">Timeline</th></tr>
+  <tr>
+    <td>COMP-02</td>
+    <td><strong>Insurance Adequacy</strong></td>
+    <td>$794/mo insurance with no breakdown. Shopify Plus agency handling client store data and payment integrations needs E&O ($1M+), cyber liability ($1M+), possibly D&O. A single data breach could exceed all coverage.</td>
+    <td>Month 2: Request policy declarations. Map coverage vs client MSA requirements. Get gap quotes. Typical proper coverage: $1,500-3,000/mo.</td>
+    <td>Jul 2026</td>
+  </tr>
+  <tr>
+    <td>COMP-03</td>
+    <td><strong>Data Privacy Obligations</strong></td>
+    <td>Makro handles client Shopify data, customer PII, ERP credentials. No data handling policy, no PIPEDA compliance, no breach response plan. Presidio (mentioned by Mike) is for Makro's own data in AI -- not client data.</td>
+    <td>Month 3: Draft 2-page data handling policy. Add "Client Data Cleanup" to project closeout. Ensure contractor agreements include confidentiality clauses.</td>
+    <td>Aug 2026</td>
+  </tr>
+  <tr>
+    <td>PEOPLE-03</td>
+    <td><strong>Onboarding Ramp Not Modeled</strong></td>
+    <td>5 new hires at full utilization targets from start month. Reality: 2-3 month ramp to target. At $180/hr, a dev at 30% vs 70% in month 1-2 = $11,520/mo lost capacity per person.</td>
+    <td>Add "Ramp Months" column to People tab (default: 3). Modify capacity formulas: Month 1 = 25%, Month 2 = 50%, Month 3 = 75%. 30-minute model change.</td>
+    <td>Week 1</td>
+  </tr>
+  <tr>
+    <td>CLIENT-02</td>
+    <td><strong>Contract Terms Not Standardized</strong></td>
+    <td>Payment terms directly affect DSO. If some clients are Net-60 while model assumes Net-30, cash forecast is wrong. No standard SOW checklist for financial terms.</td>
+    <td>Month 2: Audit last 5 SOWs for payment terms. Create SOW financial terms checklist. Add "Payment Terms" field to Pipeline tab.</td>
+    <td>Jul 2026</td>
+  </tr>
+  <tr>
+    <td>RESIL-01</td>
+    <td><strong>Custom Tooling SPOF</strong></td>
+    <td>Mike built QB MCP, Atio connector, data pipeline architecture. If Mike is unavailable, who maintains these? Mike self-identifies as "0 to 50 and drops."</td>
+    <td>Month 1: Document existing QB MCP. Month 2: Ensure repo has comprehensive README + health check alerts. Month 3: Cross-train Rahul on pipeline architecture.</td>
+    <td>Jul-Aug 2026</td>
+  </tr>
+  <tr>
+    <td>GROWTH-01</td>
+    <td><strong>Capacity Planning is Reactive</strong></td>
+    <td>Salary cap tells if you CAN afford to hire, not WHEN you MUST hire to avoid turning away work. Mike explicitly asked: "if we add developer X from June to September, what happens?"</td>
+    <td>Month 3: Build capacity demand model mapping pipeline deals to required hours by role. Compare to available capacity. Identify the month where demand exceeds supply.</td>
+    <td>Aug 2026</td>
+  </tr>
+  <tr>
+    <td>RESIL-02</td>
+    <td><strong>Teamwork Migration Change Mgmt</strong></td>
+    <td>Moving from Jira/Smartsheet/Productive to Teamwork. No migration timeline, data plan, training plan, or rollback criteria. Botched migration craters utilization 2-4 weeks.</td>
+    <td>Month 1: Define migration timeline. Month 2: Parallel run. Month 3: Cutover once success criteria met. Budget 2-4h training per person.</td>
+    <td>Jun-Aug 2026</td>
+  </tr>
+</table>
+
+<h3>Medium Severity (Scaling Problems)</h3>
+<table>
+  <tr><th style="width:8%">ID</th><th>Blind Spot</th><th style="width:25%">Resolution</th></tr>
+  <tr><td>COMP-04</td><td><strong>Tax Planning Limited to Reserves.</strong> Missing SR&ED credits (15-35% on R&D, potentially $30-80K/yr for Shopify app development). Missing transfer pricing docs for offshore contractors.</td><td>Month 4: Engage SR&ED consultant (most work on contingency). Flag transfer pricing for accountant.</td></tr>
+  <tr><td>PEOPLE-04</td><td><strong>Bench Cost Between Projects Invisible.</strong> Even 1-2 weeks bench per dev per quarter at $180/hr = $50-100K/yr lost revenue.</td><td>Build forward-looking resource availability view in Teamwork. Add "Bench Days" to weekly ops snapshot.</td></tr>
+  <tr><td>CLIENT-03</td><td><strong>No Client Satisfaction Measurement.</strong> Satisfaction is a leading indicator of retention. Mike is considering dropping Clarius -- was there an earlier signal?</td><td>Month 3: 3-question post-project survey via Typeform/Google Forms. Quarterly pulse for retainer clients.</td></tr>
+  <tr><td>CLIENT-04</td><td><strong>Warranty Obligations Not Modeled.</strong> Post-launch support is unbounded free work. 80h at $180/hr = $14,400 per project.</td><td>Month 2: Define 30-day warranty in SOW. Add "Warranty" phase to Teamwork project template. Track costs.</td></tr>
+  <tr><td>GROWTH-02</td><td><strong>Service Line Profitability Not Tracked.</strong> Custom builds, retainers, and IP work have different margin profiles. Decisions (keep Clarius? invest in B2B Supercharged?) made on intuition.</td><td>Month 2: Add "Service Line" column to Pipeline + Teamwork. Month 4: First quarterly service-line P&L.</td></tr>
+  <tr><td>RESIL-04</td><td><strong>Process Documentation is a Metric With No Plan.</strong> Listed as a metric in both charter and scorecard. No inventory of processes, no standard, no owner.</td><td>Month 2: List top 10 processes. Month 3: Document top 3 (monthly close, invoicing, project kickoff).</td></tr>
+</table>
+
+<h3>Low Severity (Improvements)</h3>
+<table>
+  <tr><th style="width:8%">ID</th><th>Blind Spot</th><th style="width:25%">Resolution</th></tr>
+  <tr><td>GROWTH-03</td><td><strong>Pricing Strategy = Single Unvalidated Number.</strong> $180/hr blended rate not based on actual realized rates per project.</td><td>Month 3: Calculate effective rate per completed project. Compare to $180 assumption.</td></tr>
+  <tr><td>GROWTH-04</td><td><strong>Currency Risk Unhedged.</strong> 5% CAD/USD swing on a $170K USD deal = $11,500 variance.</td><td>Month 2: FX Assumptions section in Setup. Month 4: Sensitivity row in Plan tab.</td></tr>
+  <tr><td>GROWTH-05</td><td><strong>Unbilled WIP Not Tracked.</strong> Work performed but not yet invoiced = revenue earned but cash not triggered. Could reach $50-100K.</td><td>Month 3: Weekly WIP report from Teamwork time entries. Integrate into 13-week cash forecast.</td></tr>
+  <tr><td>RESIL-03</td><td><strong>No Disaster Recovery for Critical Systems.</strong> If QB is down for 24h during monthly close, no documented workaround.</td><td>Month 4: 1-page "System Outage Playbook" with manual fallbacks. 2-3 hours to write.</td></tr>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- 10. IMPLEMENTATION ROADMAP                                    -->
+<!-- ============================================================ -->
+<section id="roadmap" class="page-break">
+<h2 class="section-title">10. Implementation Roadmap</h2>
+<p>4-week sprint starting June 12, 2026. Each week has specific deliverables with verifiable completion criteria. All required API access (QuickBooks, Atio CRM, Teamwork, Plaid) is confirmed. Week 1 is pure model cleanup using data already in the workbook plus one manual QB pull (May P&L via Jose). Source integrations begin Week 2.</p>
+
+<div class="roadmap-week">
+  <div class="roadmap-week-header">Week 1: June 12-18 -- Model Cleanup + Manual Population + Proof of Life</div>
+  <div class="roadmap-week-body">
+    <h4>Owner: Rahul (full week allocation)</h4>
+    <ul>
+      <li><strong>Day 1 (Jun 12):</strong> Open Excel model, Ctrl+Alt+F9 to force recalculation. Document all #REF!, #NAME?, #VALUE! errors. Fix CRIT-05.</li>
+      <li><strong>Day 1-2:</strong> Fix CRIT-01 (Owner $20K/mo cost), CRIT-04 (burden on contractors only). Verify propagation to Plan and Cash tabs.</li>
+      <li><strong>Day 2:</strong> Fix CRIT-02 (LER formula to Crabtree definition). Reconcile targets: 2.0 target, 1.80 floor, consistent everywhere. Update Setup!B6 profit target to 15%.</li>
+      <li><strong>Day 2-3:</strong> Fix CRIT-03 (revenue double-counting filter). Fix CRIT-06 (deposit double-collection). Validate revenue and cash totals against known deal values.</li>
+      <li><strong>Day 3:</strong> Add FX rate cell to Setup (HIGH-02). Add Currency column to Pipeline. Update Pipeline deals to reference FX rate. Update Scorecard month selector to =MONTH(TODAY()).</li>
+      <li><strong>Day 3-4:</strong> Refresh Pipeline tab with current deal data from Atio CRM (manual pull if API not yet connected). Verify all 22 deals are current. Remove Lost deals from active calculations.</li>
+      <li><strong>Day 4:</strong> Build headcount scenario tool: add Include Y/N toggle column in People tab, create scenario-aware Plan summary that reads the toggle. Pre-build scenarios Mike mentioned: remove Rashmi, remove James, reduce Nick's hours, drop Clarius retainer. <strong>This is needed for the June 11 discussion with Mike.</strong></li>
+      <li><strong>Day 4-5:</strong> Pull May 2026 P&L from QuickBooks (via Jose or existing MCP). Compare line-by-line against model's May forecast. Document every variance and cause. This is the "proof of life" reconciliation (I5).</li>
+      <li><strong>Day 5:</strong> Add onboarding ramp to People tab (PEOPLE-03). Fill in Planned Changes amounts (Couplier, Gitbook). Validate all tabs produce reasonable numbers.</li>
+    </ul>
+    <h4>Completion Criteria (All Must Be True):</h4>
+    <ul>
+      <li>Every formula cell in the model resolves to a number (no None, no #REF!, no #NAME?).</li>
+      <li>Owner cost flows through People, Plan, and Cash tabs ($20K/mo visible in monthly totals).</li>
+      <li>Rahul's cost appears in all months (no end date — ongoing engagement).</li>
+      <li>LER uses Crabtree formula: (Revenue - COGS_Tools) / (Delivery_Labor + Burden). Result is a single number between 1.0 and 3.0.</li>
+      <li>Revenue tab does not double-count Won deals.</li>
+      <li>Cash tab deposits are not double-collected.</li>
+      <li>Headcount scenario tool shows side-by-side current vs proposed for at least 3 scenarios.</li>
+      <li>May 2026 reconciliation document exists with line-by-line variance analysis.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="roadmap-week">
+  <div class="roadmap-week-header">Week 2: June 19-25 -- Source Integrations + Actuals Tab</div>
+  <div class="roadmap-week-body">
+    <h4>Owner: Rahul (primary), Mike (credential provision, architecture review)</h4>
+    <ul>
+      <li><strong>Day 1-2:</strong> Set up <code>makro-finops</code> GitHub repo with directory structure (config/, snapshots/, computed/, scripts/, model/, tests/). Initialize config files (sources.yaml, thresholds.yaml, fx-rates.yaml, category-map.yaml).</li>
+      <li><strong>Day 2-3:</strong> Build QuickBooks extractor (qb_extractor.py). Pull: bank balances (daily), AR aging (daily), full P&L (monthly). Uses existing MCP/app auth. Write first snapshot to repo. <em>QB MCP credentials confirmed available.</em></li>
+      <li><strong>Day 3:</strong> Build Plaid extractor (plaid_extractor.py). Pull: account balances. Cross-reference with QB bank balance (within $500 tolerance). <em>Plaid credentials confirmed available.</em></li>
+      <li><strong>Day 3-4:</strong> Build Atio CRM extractor (attio_extractor.py). Pull: all deals, stages, probabilities, company records. Map to Pipeline tab structure. <em>Atio API key confirmed available.</em></li>
+      <li><strong>Day 4:</strong> Build transformation layer: normalizer.py (currency, dates), fx_converter.py, categorizer.py (QB expense categories to model categories), validator.py (schema + cross-source checks).</li>
+      <li><strong>Day 4-5:</strong> Add Actuals vs Budget tab to Excel model (Tab 12). Same P&L line-item structure as Plan tab. Add Variance columns ($ and %). Build model-writer.py to populate from computed YAML.</li>
+      <li><strong>Day 5:</strong> Import June 1-25 QB actuals into the new Actuals tab. First automated model update via model-writer.py. Validate output matches manual reconciliation from Week 1.</li>
+    </ul>
+    <h4>Completion Criteria:</h4>
+    <ul>
+      <li>makro-finops repo exists with at least 3 days of committed snapshots from QB, Plaid, and Atio.</li>
+      <li>Transformation pipeline produces normalized YAML from raw snapshots.</li>
+      <li>Actuals vs Budget tab exists with June partial-month data populated.</li>
+      <li>model-writer.py successfully writes computed values into Excel cells and commits updated workbook.</li>
+      <li>All source credentials configured and validated (QB, Plaid, Atio).</li>
+    </ul>
+  </div>
+</div>
+
+<div class="roadmap-week">
+  <div class="roadmap-week-header">Week 3: June 26 - July 2 -- Automated Rhythms + Escalation Alerts</div>
+  <div class="roadmap-week-body">
+    <h4>Owner: Rahul (primary)</h4>
+    <ul>
+      <li><strong>Day 1-2:</strong> Build metric computation engine (metric_engine.py): LER, margins, salary cap, cash runway, DSO, pipeline coverage, overhead ratio, revenue per FTE, utilization (once Teamwork data available). Outputs computed/daily/YYYY-MM-DD.yaml.</li>
+      <li><strong>Day 2-3:</strong> Build daily cash email (daily_cash_report.py). HTML template with: balance, runway, expected in/out, Core Capital status, one-line verdict. Delivery via Gmail API. Set up GitHub Actions cron for 8:45 AM ET. <strong>Protected Floor item 1 goes live.</strong></li>
+      <li><strong>Day 3-4:</strong> Build weekly ops snapshot (weekly_snapshot_report.py). 6 metrics with Green/Yellow/Red, trend arrows, commentary. Delivery via Slack. Set up Monday 9:30 AM cron. <strong>Protected Floor item 2 goes live.</strong></li>
+      <li><strong>Day 4:</strong> Build threshold engine (threshold_engine.py) + alert router (alert_router.py). Config-driven from thresholds.yaml. Deduplication with 24h/7d cooldown. Slack DM delivery for critical alerts. Active alerts tracked in computed/alerts/active.yaml.</li>
+      <li><strong>Day 4-5:</strong> Build Teamwork extractor (tw_extractor.py) if Teamwork is provisioned. Pull: time entries, project budgets, milestones. If not yet available: document blocker and set up mock data path. <em>Teamwork account confirmed provisioned.</em></li>
+      <li><strong>Day 5:</strong> Build project burn check script (automated daily). Configure 75% and 90% threshold alerts. End-to-end test: simulate a project crossing 75%, verify Slack alert fires.</li>
+    </ul>
+    <h4>Completion Criteria:</h4>
+    <ul>
+      <li>Daily cash email sends by 9 AM on at least 3 consecutive business days with real data.</li>
+      <li>Weekly ops snapshot sends on Monday June 30 with at least 4 of 6 metrics populated (utilization may be blocked on Teamwork).</li>
+      <li>Threshold engine evaluates all 24 metrics and correctly fires a test alert via Slack DM.</li>
+      <li>Alert deduplication works: same breach does not fire twice within cooldown.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="roadmap-week">
+  <div class="roadmap-week-header">Week 4: July 3-9 -- First Monthly Close + 13-Week Cash + CEO Dashboard</div>
+  <div class="roadmap-week-body">
+    <h4>Owner: Rahul (primary), Jose (QB close data by July 3)</h4>
+    <ul>
+      <li><strong>Day 1 (Jul 3):</strong> Jose closes June in QuickBooks (reconcile bank, categorize expenses, confirm all invoices entered). QB data complete by end of day.</li>
+      <li><strong>Day 2 (Jul 4 -- work day if needed, or Jul 5):</strong> Run full monthly close pipeline: QB extractor pulls June P&L, transformation normalizes, metric engine computes all monthly KPIs, model-writer updates all Excel tabs including Actuals vs Budget. Generate monthly close report (HTML).</li>
+      <li><strong>Day 2-3:</strong> Build 13-Week Cash forecast tab (Tab 11). Weekly columns, row structure: Opening Balance, Cash In (retainer collections, milestone collections, AR waterfall by bucket, deposits), Cash Out (payroll by pay date, contractors, rent, subscriptions, tax reserve), Closing Balance. Populate weeks 1-4 from known data (QB AR/AP, payroll calendar), weeks 5-13 from model assumptions.</li>
+      <li><strong>Day 3-4:</strong> Build reconciliation engine (reconciler.py). Compare June forecast vs June actuals per line item. Compute variance, categorize (timing/amount/missing/model-error). Generate narrative via Claude (after Presidio redaction).</li>
+      <li><strong>Day 4:</strong> Build CEO 4-Question Dashboard. Single-page HTML that answers all 4 Gate Zero questions from real data. Deploy to password-protected GitHub Pages via StatiCrypt. Mike can access from phone without opening a spreadsheet.</li>
+      <li><strong>Day 5:</strong> Present June monthly close package to Mike. Includes: P&L (actual vs forecast), LER, salary cap status, cash runway, 13-week cash forecast, client concentration (estimate), reconciliation narrative. <strong>Protected Floor item 3 goes live.</strong></li>
+    </ul>
+    <h4>Completion Criteria:</h4>
+    <ul>
+      <li>June 2026 monthly P&L close delivered by July 5 with actuals from QuickBooks and variance analysis.</li>
+      <li>13-week cash forecast exists with weekly granularity. Weeks 1-4 populated from real data. Any projected shortfall flagged.</li>
+      <li>CEO can answer all 4 Gate Zero questions from a single URL (GitHub Pages dashboard) in under 5 minutes.</li>
+      <li>Mike reviews and confirms the numbers are grounded in reality (not fictional).</li>
+      <li>All 3 Protected Floor reporting items (daily cash, weekly snapshot, monthly close) have shipped at least once with real data.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="callout callout-warning">
+<strong>Credential Status:</strong> All required API access (QuickBooks, Atio CRM, Teamwork, Plaid) is confirmed and will be provisioned as needed. No credential blockers on this roadmap. Week 1 proceeds with model cleanup (zero external dependencies). Source integrations begin Week 2 once credentials are configured.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 11. RECOMMENDED TOOLING & MCP INTEGRATIONS                    -->
+<!-- ============================================================ -->
+<section id="tooling" class="page-break">
+<h2 class="section-title">11. Recommended Tooling &amp; MCP Integrations</h2>
+<p>Claude Code has a growing ecosystem of financial MCP servers and plugins. These directly accelerate the pipeline by replacing custom extractors with official, maintained connectors.</p>
+
+<h3>Priority 1: Install Immediately (Week 1-2)</h3>
+<table>
+  <tr><th>Tool</th><th>Type</th><th>What It Does</th><th>Setup</th></tr>
+  <tr>
+    <td><strong>Intuit QuickBooks MCP</strong><br><span class="badge badge-green">OFFICIAL</span></td>
+    <td>MCP Server</td>
+    <td>Full QBO access: chart of accounts, invoices, bills, journal entries, payments, P&amp;L, balance sheet, AR/AP aging. Read + write. Replaces custom QB extractor scripts.</td>
+    <td><code>git clone https://github.com/intuit/quickbooks-online-mcp-server</code><br>Set env: <code>QUICKBOOKS_CLIENT_ID</code>, <code>QUICKBOOKS_CLIENT_SECRET</code>, <code>QUICKBOOKS_REFRESH_TOKEN</code>, <code>QUICKBOOKS_REALM_ID</code>. Start read-only with <code>QUICKBOOKS_DISABLE_WRITE=true</code>.</td>
+  </tr>
+  <tr>
+    <td><strong>Google Sheets MCP</strong></td>
+    <td>MCP Server</td>
+    <td>Cell-level read/write to Google Sheets. Essential for the Excel → Sheets migration. Enables automated actuals push, formula validation, batch updates.</td>
+    <td><code>git clone https://github.com/domdomegg/google-sheets-mcp</code><br>Requires Google Cloud Console OAuth 2.0 credentials + Sheets API enabled.</td>
+  </tr>
+  <tr>
+    <td><strong>Attio CRM MCP</strong><br><span class="badge badge-green">OFFICIAL</span></td>
+    <td>MCP Server (hosted)</td>
+    <td>Search, read, create CRM records — people, companies, deals. Auto-approve reads, confirm writes. Connects pipeline revenue to financial model.</td>
+    <td>Add remote MCP: <code>https://mcp.attio.com/mcp</code>. OAuth login with Atio account. Permissions inherit from user role.</td>
+  </tr>
+</table>
+
+<h3>Priority 2: Install Week 2-3</h3>
+<table>
+  <tr><th>Tool</th><th>Type</th><th>What It Does</th><th>Setup</th></tr>
+  <tr>
+    <td><strong>Stripe MCP</strong><br><span class="badge badge-green">OFFICIAL</span></td>
+    <td>MCP Server</td>
+    <td>Customer management, invoice creation, payment tracking. If billing through Stripe.</td>
+    <td><code>npx -y @stripe/mcp@latest --api-key=sk_live_...</code><br>Use restricted API keys for safety.</td>
+  </tr>
+  <tr>
+    <td><strong>Plaid MCP</strong><br><span class="badge badge-green">OFFICIAL</span></td>
+    <td>MCP Server</td>
+    <td>Real-time bank balances, transaction history. Powers daily cash email and 13-week forecast opening balance.</td>
+    <td>Remote SSE transport. OAuth — no API key setup. Requires active Plaid plan (paid).</td>
+  </tr>
+  <tr>
+    <td><strong>Excel MCP Server</strong></td>
+    <td>MCP Server</td>
+    <td>Full Excel manipulation beyond openpyxl — read, write, format, charts, batch ops. Useful during Week 1 model repair.</td>
+    <td><code>git clone https://github.com/sbraind/excel-mcp-server</code> (macOS compatible, ExcelJS-based)</td>
+  </tr>
+</table>
+
+<h3>Priority 3: Evaluate After Month 1</h3>
+<table>
+  <tr><th>Tool</th><th>What It Does</th><th>When</th></tr>
+  <tr>
+    <td><strong>Claude for Small Business</strong> (Anthropic)</td>
+    <td>15 agentic workflows including <code>/close-month</code> (monthly close pulling from QB + bank, drafts close packet, lists exceptions), invoice chasing, cash flow projection. First-party Anthropic, all paid plans.</td>
+    <td>Evaluate once QB MCP is connected. If <code>/close-month</code> works in Claude Code (not just Cowork), replaces custom monthly close script.</td>
+  </tr>
+  <tr>
+    <td><strong>Anthropic Financial Services Plugins</strong></td>
+    <td>GL Reconciler (finds breaks, traces root cause) and Month-End Closer (accruals, roll-forwards, variance commentary). Rest is investment banking — skip.</td>
+    <td><code>claude plugin install financial-analysis@claude-for-financial-services</code>. Evaluate GL Reconciler for actuals vs budget reconciliation.</td>
+  </tr>
+  <tr>
+    <td><strong>n8n Workflows</strong> (already connected)</td>
+    <td>Visual workflow automation. Could orchestrate the daily/weekly/monthly cadence without GitHub Actions. Already have <code>mcp__n8n-mcp</code> connected.</td>
+    <td>Evaluate as alternative to GitHub Actions for scheduling. Advantage: visual pipeline editor, easier for non-developers to modify.</td>
+  </tr>
+</table>
+
+<h3>Already Connected (Fix or Leverage)</h3>
+<table>
+  <tr><th>Integration</th><th>Status</th><th>Action</th></tr>
+  <tr>
+    <td>Gmail MCP</td>
+    <td><span class="badge badge-green">Connected</span></td>
+    <td>Use for daily cash email delivery and invoice follow-up automation</td>
+  </tr>
+  <tr>
+    <td>Google Drive MCP</td>
+    <td><span class="badge badge-green">Connected</span></td>
+    <td>Use for reading financial docs. Add Sheets MCP for cell-level model access.</td>
+  </tr>
+  <tr>
+    <td>Slack MCP</td>
+    <td><span class="badge badge-green">Connected</span></td>
+    <td>Use for weekly snapshot delivery and escalation alerts</td>
+  </tr>
+  <tr>
+    <td>Notion MCP</td>
+    <td><span class="badge badge-green">Connected</span></td>
+    <td>Use for ops dashboards and KPI tracking pages</td>
+  </tr>
+  <tr>
+    <td>n8n MCP</td>
+    <td><span class="badge badge-green">Connected</span></td>
+    <td>Evaluate for pipeline orchestration (daily/weekly/monthly schedules)</td>
+  </tr>
+  <tr>
+    <td>Productive.io skill</td>
+    <td><span class="badge badge-green">Available</span></td>
+    <td>Leverage for utilization, project margins, time data until Teamwork migration complete</td>
+  </tr>
+  <tr>
+    <td>ceo-report skill</td>
+    <td><span class="badge badge-green">Available</span></td>
+    <td>Existing CEO dashboard generator — extend with finops data pipeline outputs</td>
+  </tr>
+</table>
+
+<div class="callout callout-success">
+<strong>Net impact:</strong> With QB MCP + Google Sheets MCP + Attio MCP installed, the custom extractor scripts in Week 2 become thin wrappers around MCP calls rather than raw API integrations. Cuts Week 2 effort by ~40%. The <code>/close-month</code> workflow from Claude for Small Business could potentially replace the entire Month 4 custom monthly close pipeline — evaluate once QB MCP is live.
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 12. APPENDIX: RESEARCH SOURCES                                -->
+<!-- ============================================================ -->
+<section id="appendix" class="page-break">
+<h2 class="section-title">12. Appendix: Research Sources</h2>
+
+<h3>Agency Operations Benchmarks</h3>
+<table>
+  <tr><th style="width:25%">Source</th><th>Key Finding</th><th style="width:25%">Relevance to Makro</th></tr>
+  <tr>
+    <td><strong>Greg Crabtree, "Simple Numbers"</strong><br>Labor Efficiency Ratio</td>
+    <td>LER = Gross Margin / Total Labor Cost. Target: 1.9-2.1x. At LER &lt; 2.0: ~10% net profit. At LER &gt; 2.0: ~20% net profit. Salary Cap = Revenue - Target Profit - Non-Salary Costs. Track as rolling 12-month trend. Sustained LER &lt; 1.5 is the alarm.</td>
+    <td>At ~20 people and sub-$5M revenue, Makro sits in Crabtree's "black hole" zone ($1M-$5M). Use rolling 12-month LER to validate every hiring decision against 15% pretax threshold.</td>
+  </tr>
+  <tr>
+    <td><strong>Greg Crabtree, "4 Simple Numbers"</strong><br>Profit Benchmarks</td>
+    <td>5% pretax = life support. 10% = functional business (real breakeven). 15%+ = thriving. Core Capital Target: 2 months opex in cash with no debt before distributions. At $1M-$5M revenue: "staffing must be added before it is affordable."</td>
+    <td>Makro's 15% target / 10% floor aligns exactly. The 30% in Setup is aspirational for a mature agency. Core Capital (3mo target, 2mo floor) is correct.</td>
+  </tr>
+  <tr>
+    <td><strong>David Maister, "Managing the Professional Service Firm"</strong><br>Leverage Model</td>
+    <td>Profitability = margin x productivity x leverage. Seniors spend 40-50% of time on work juniors could do. Track "profit per principal hour." Well-leveraged project: 1 senior architect + 2-3 mid implementers + 1 junior for QA.</td>
+    <td>Shopify B2B integration: discovery/architecture = Brains work (low leverage, high margin). Data mapping, config, testing = Procedure work (high leverage). Audit senior time allocation on current projects.</td>
+  </tr>
+  <tr>
+    <td><strong>SPI Research 2026 PS Maturity Benchmark</strong><br>509 firms surveyed</td>
+    <td>Industry EBITDA fell to 9.9% (5-year avg: 13.8%). HPOs: 14.5% EBITDA vs 6.7% rest. Billable utilization: industry 66.4% (all-time low), HPOs 75%, Level 5 firms 81.2%. The single capability separating HPOs: integrated real-time visibility across delivery, resources, and financials.</td>
+    <td>Makro is almost certainly Level 1-2 maturity. Concrete targets: utilization 70%+, project overruns &lt;10%, revenue per billable consultant &gt;$200K. At ~15 billable staff, that means ~$3M minimum revenue.</td>
+  </tr>
+  <tr>
+    <td><strong>Promethean Research 2025</strong><br>Agency Margins</td>
+    <td>Small agencies (10-24 FTE) average 12% after-tax net margin. Development agencies average 11%. Studios (0-9 FTE) average 19% -- size brings overhead.</td>
+    <td>Validates that 15% pretax is ambitious but achievable for Makro's size (10-24 FTE bracket).</td>
+  </tr>
+</table>
+
+<h3>Cash Flow Forecasting</h3>
+<table>
+  <tr><th style="width:25%">Source</th><th>Key Finding</th><th style="width:25%">Relevance to Makro</th></tr>
+  <tr>
+    <td><strong>Wall Street Prep, Dwight Funding, McCracken Alliance</strong><br>13-Week Cash Flow Model</td>
+    <td>Fixed column layout (Week 1-13). Weeks 1-4: bottom-up from known data (target +/-5% accuracy). Weeks 5-13: top-down from assumptions (+/-10-15%). Weekly Monday refresh ~60 minutes. Pipeline deals only enter weeks 9-13 with probability AND cash-conversion-timing haircut.</td>
+    <td>Makro's Monday refresh pulls: actual bank balance, QB AR aging for weeks 1-4, Teamwork milestones for invoice timing, Atio pipeline for weeks 9-13 only. Payroll is ~65% of outflows -- mapping to actual pay dates is why weekly granularity matters.</td>
+  </tr>
+  <tr>
+    <td><strong>FINOYA, Centime, Tesorio</strong><br>AR Waterfall Mechanics</td>
+    <td>"Invoiced" does not equal "collected." Full chain: milestone completion &rarr; invoice generation (1-7 days) &rarr; client processing &rarr; payment &rarr; bank clearing. Typical PS firm: 41-48 actual days vs contractual 30-day terms. Collection probability: 73% after 90 days, &lt;50% after 6 months.</td>
+    <td>Build client-segment lookup with observed collection days. AR Waterfall tab pulls existing AR from QB by aging bucket + future invoices from Teamwork milestone dates + segment-specific lag = cash week. This is the technical core that makes the forecast accurate.</td>
+  </tr>
+  <tr>
+    <td><strong>Forecastio, Prospeo</strong><br>Pipeline-to-Cash Conversion</td>
+    <td>Pipeline deals need TWO haircuts before entering cash forecast: close-probability AND cash-conversion-timing. For a 20-person agency: close &rarr; SOW &rarr; kickoff &rarr; first deliverable &rarr; invoice &rarr; collection = 8-13 weeks. Pipeline deals populate ONLY weeks 9-13.</td>
+    <td>Retainer deals (TA Appliance, Clarius) produce cash faster (deposit at signing, monthly billing). Milestone-based projects (Rapido, MA Matting) have longest cash conversion. Segment deals by type and apply different timing assumptions.</td>
+  </tr>
+</table>
+
+<h3>KPI Benchmark Validation</h3>
+<table>
+  <tr><th>Metric</th><th>Proposed Band</th><th>Research Validation</th><th>Adjustment</th></tr>
+  <tr><td>Pretax Profit %</td><td>10% floor / 15% target / 20%+ excellent</td><td>Validated by Crabtree, SPI (9.9% industry avg), Promethean (12% small agency avg), IOTA (18-22% for 7-figure agencies)</td><td>None needed. Bands are well-calibrated.</td></tr>
+  <tr><td>LER</td><td>1.80 floor / 2.0 target</td><td>Validated by Crabtree (1.9-2.1). No published Year 1 target -- use rolling 12-month trend.</td><td>None needed.</td></tr>
+  <tr><td>Gross Margin</td><td>50-60% agency-wide</td><td>SPI: industry avg 37.7% project margin; HPOs 45.1%. IOTA/Scoro: 55-75% per project, 25-35% net. Digital agencies should target higher than PS industry avg.</td><td>Split: 60-70% per project target, 50-60% agency-wide after bench/overhead absorption.</td></tr>
+  <tr><td>Utilization (Senior)</td><td>60-75%</td><td>Validated. Saviom, SPI, Wow Company all confirm 60-75% for seniors.</td><td>None needed.</td></tr>
+  <tr><td>Utilization (Mid)</td><td>70-80%</td><td>Research suggests 75-85% for mid-level. Makro's 70-80% is slightly conservative.</td><td>Consider pushing to 75-85% target.</td></tr>
+  <tr><td>Utilization (Junior)</td><td>80-90%</td><td>Validated. Some sources push 85% target, 90% ceiling.</td><td>None needed.</td></tr>
+  <tr><td>DSO</td><td>30 target / 45 acceptable / 60+ crisis</td><td>Validated by CreditPulse, Projectworks. Top PS firms: 30-45 days. Average: 50-60 days. Collection probability drops to 73% after 90 days.</td><td>None needed.</td></tr>
+  <tr><td>Client Concentration</td><td>Top 1 &lt;25%, Top 3 &lt;50%</td><td>Bender CFO: &gt;25% = high risk. Wall Street Prep: &gt;10% is a red flag for valuation. SPP: top 10 &gt;40% is another check.</td><td>Consider tighter: &lt;20% single client for valuation readiness.</td></tr>
+  <tr><td>Overhead Ratio</td><td>&le;30% of revenue</td><td>IOTA, Productive.io, Workamajig: 20-30% healthy. &gt;35% signals bloat. &lt;15% = underinvestment.</td><td>None needed.</td></tr>
+  <tr><td>Revenue per FTE</td><td>&ge;$150K</td><td>SPI: &gt;$200K for HPOs. 3x salary rule: $50K salary = $150K revenue. At ~$75K avg salary, target $225K.</td><td>$150K is a floor. Push toward $200K as the agency matures.</td></tr>
+</table>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER                                                        -->
+<!-- ============================================================ -->
+<hr class="divider">
+<footer style="text-align:center; padding: 1.5rem 0; color: var(--mk-muted); font-size: 0.85rem;">
+  <strong>Makro Agency</strong> &mdash; Ops Financial Model Review<br>
+  Prepared June 9, 2026 &bull; Presentation: June 11, 2026<br>
+  This document is confidential and intended for internal use only.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true, theme:'base', themeVariables:{primaryColor:'#e8f4f8', primaryBorderColor:'#003d5c', primaryTextColor:'#1a1a2e', lineColor:'#003d5c', secondaryColor:'#f0f7fc', tertiaryColor:'#fef9e7'}});</script>
+</body>
+</html>

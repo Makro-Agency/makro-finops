@@ -1,0 +1,6 @@
+## FX Rates — Manual update when rates move significantly
+## Model base currency: CAD
+
+usd_to_cad: 1.35
+last_updated: "2026-06-10"
+update_trigger: "> 2% movement from last rate"

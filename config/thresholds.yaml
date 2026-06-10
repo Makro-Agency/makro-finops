@@ -1,0 +1,163 @@
+## Makro Agency — Operational Metric Thresholds
+## Source: Crabtree "Simple Numbers" + SPI 2026 PS Maturity Benchmark
+## Last updated: 2026-06-10
+
+financial:
+  pretax_profit_pct:
+    green: ">= 0.15"
+    yellow: "0.10 - 0.149"
+    red: "< 0.10"
+    cadence: monthly
+    owner: rahul
+    escalation: "Red: CEO same day + root cause analysis"
+
+  ler:
+    formula: "(revenue - pass_throughs) / direct_labor"
+    green: ">= 2.0"
+    yellow: "1.80 - 1.99"
+    red: "< 1.80"
+    cadence: monthly
+    owner: rahul
+    escalation: "Red 2 consecutive months: mandatory workforce review"
+
+  gross_margin_pct:
+    green: ">= 0.60"
+    yellow: "0.50 - 0.599"
+    red: "< 0.50"
+    cadence: monthly
+    owner: rahul
+    escalation: "Red: CEO within 24h of close"
+
+  salary_cap_pct:
+    formula: "actual_people_cost / (revenue - 0.15*revenue - non_labor_costs)"
+    green: "<= 0.95"
+    yellow: "0.951 - 1.00"
+    red: "> 1.00"
+    cadence: monthly
+    owner: rahul
+    escalation: "Red: no new hires until restored"
+
+cash:
+  dso_days:
+    green: "<= 30"
+    yellow: "31 - 45"
+    red: "> 45"
+    cadence: weekly
+    owner: jose
+    escalation: "Red: CEO + AR action plan within 48h"
+
+  cash_runway_months:
+    green: ">= 3"
+    yellow: "2 - 2.99"
+    red: "< 2"
+    cadence: daily
+    owner: rahul
+    escalation: "Red: CEO same day, emergency meeting within 24h"
+
+  ar_aging_60plus:
+    green: "0"
+    yellow: "1-2 invoices"
+    red: "3+ invoices or any > $10K"
+    cadence: weekly
+    owner: jose
+    escalation: "Red: CEO Slack DM same day"
+
+  forecast_accuracy_2wk:
+    green: ">= 0.90"
+    yellow: "0.80 - 0.899"
+    red: "< 0.80"
+    cadence: weekly
+    owner: rahul
+    escalation: "Red 3+ weeks: methodology review"
+
+revenue:
+  pipeline_coverage_pct:
+    formula: "weighted_pipeline / required_revenue"
+    green: ">= 1.50"
+    yellow: "1.00 - 1.49"
+    red: "< 1.00"
+    cadence: weekly
+    owner: rahul
+    escalation: "Red: CEO + sales pipeline review"
+
+  revenue_gap_to_target:
+    green: "<= 0"
+    yellow: "1 - 49999"
+    red: ">= 50000"
+    cadence: monthly
+    owner: rahul
+    escalation: "Red: quarterly reforecast triggered"
+
+operations:
+  utilization_blended:
+    green: ">= 0.70"
+    yellow: "0.60 - 0.699"
+    red: "< 0.60"
+    cadence: weekly
+    owner: rahul
+    escalation: "Red 2 weeks: capacity review with Delivery"
+
+  utilization_senior:
+    target: 0.75
+    floor: 0.60
+
+  utilization_mid:
+    target: 0.80
+    floor: 0.70
+
+  utilization_junior:
+    target: 0.90
+    floor: 0.80
+
+  time_tracking_compliance:
+    green: ">= 0.95"
+    yellow: "0.85 - 0.949"
+    red: "< 0.85"
+    cadence: weekly
+    owner: rahul
+    escalation: "Red: named non-compliant list to Delivery Lead"
+
+  project_burn_pct:
+    alert_75: "Slack to Delivery Lead within 24h"
+    alert_90: "Slack DM to CEO same day"
+    cadence: daily
+    owner: rahul
+
+risk:
+  client_concentration_top1:
+    green: "< 0.20"
+    yellow: "0.20 - 0.249"
+    red: ">= 0.25"
+    cadence: monthly
+    owner: rahul
+    escalation: "Red: diversification plan within 10 business days"
+
+  client_concentration_top3:
+    green: "< 0.40"
+    yellow: "0.40 - 0.499"
+    red: ">= 0.50"
+    cadence: monthly
+    owner: rahul
+
+  overhead_ratio:
+    formula: "non_billable_costs / revenue"
+    green: "<= 0.25"
+    yellow: "0.26 - 0.30"
+    red: "> 0.30"
+    cadence: monthly
+    owner: rahul
+
+  revenue_per_fte:
+    green: ">= 200000"
+    yellow: "150000 - 199999"
+    red: "< 150000"
+    cadence: quarterly
+    owner: rahul
+
+expense_ratios:
+  payroll_pct: { benchmark: "0.15 - 0.20", max: 0.25 }
+  marketing_pct: { benchmark: "0.03 - 0.05", max: 0.08 }
+  rent_pct: { benchmark: "0.02 - 0.04", max: 0.05 }
+  software_pct: { benchmark: "0.01 - 0.03", max: 0.05 }
+  professional_pct: { benchmark: "0.02 - 0.04", max: 0.06 }
+  total_below_gp: { max: 0.30 }

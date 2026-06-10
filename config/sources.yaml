@@ -1,0 +1,99 @@
+## Makro Agency — Data Source Registry
+## Each source defines what data it provides, how to connect, and refresh cadence.
+
+quickbooks:
+  type: mcp_server
+  server: intuit/quickbooks-online-mcp-server
+  auth: oauth2_refresh_token
+  env_vars:
+    - QUICKBOOKS_CLIENT_ID
+    - QUICKBOOKS_CLIENT_SECRET
+    - QUICKBOOKS_REFRESH_TOKEN
+    - QUICKBOOKS_REALM_ID
+  pulls:
+    bank_balances:
+      cadence: daily
+      fields: [account_name, balance, as_of_date]
+    ar_aging:
+      cadence: daily
+      fields: [customer, invoice_number, amount, due_date, days_overdue, bucket]
+    ap_aging:
+      cadence: weekly
+      fields: [vendor, bill_number, amount, due_date, days_overdue]
+    pnl_monthly:
+      cadence: monthly
+      fields: [account, category, amount, period]
+    expense_detail:
+      cadence: monthly
+      fields: [vendor, category, amount, date, memo]
+    payroll_summary:
+      cadence: per_cycle
+      fields: [employee, gross, taxes, net, period]
+
+atio_crm:
+  type: mcp_server
+  server: attio_hosted
+  url: https://mcp.attio.com/mcp
+  auth: oauth
+  pulls:
+    deals:
+      cadence: weekly
+      fields: [name, client, stage, probability, value, currency, expected_close, duration_months]
+    companies:
+      cadence: monthly
+      fields: [name, industry, status, contact]
+
+teamwork:
+  type: rest_api
+  base_url: https://makro.teamwork.com
+  auth: api_key
+  pulls:
+    projects:
+      cadence: daily
+      fields: [name, client, status, budget_hours, logged_hours, burn_pct]
+    time_entries:
+      cadence: daily
+      fields: [person, project, task, hours, date, billable]
+    milestones:
+      cadence: daily
+      fields: [project, name, due_date, status, linked_invoice]
+    invoices:
+      cadence: weekly
+      fields: [project, amount, status, date_sent, date_paid]
+
+plaid:
+  type: mcp_server
+  server: plaid_official
+  auth: oauth
+  pulls:
+    balances:
+      cadence: daily
+      fields: [account_name, current_balance, available_balance, as_of]
+    transactions:
+      cadence: daily
+      fields: [date, amount, name, category, pending]
+
+google_sheets:
+  type: mcp_server
+  server: domdomegg/google-sheets-mcp
+  auth: oauth2
+  purpose: write computed metrics to live financial model
+  operations:
+    - read_cells
+    - write_cells
+    - batch_update
+    - format_cells
+
+manual:
+  type: human_input
+  owner: rahul
+  inputs:
+    people_changes:
+      trigger: hire_or_termination
+      fields: [name, role, type, level, billable, util_target, monthly_cost, start_date, end_date]
+    expense_changes:
+      trigger: new_subscription_or_cancellation
+      fields: [category, account, monthly_amount, start_month, end_month, notes]
+    scenario_toggles:
+      trigger: ad_hoc
+      fields: [person_or_client, action, effective_date]

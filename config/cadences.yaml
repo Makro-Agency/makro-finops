@@ -1,0 +1,119 @@
+## Makro Agency — Reporting Cadences
+## Maps each rhythm to its data sources, outputs, and delivery channel.
+
+daily:
+  cash_email:
+    time: "09:00 ET"
+    sources: [plaid.balances, quickbooks.ar_aging]
+    output: reports/daily/cash-YYYY-MM-DD.html
+    delivery: gmail
+    recipient: mike@makroagency.com
+    protected_floor: true
+
+  project_burn_check:
+    time: "09:30 ET"
+    sources: [teamwork.projects]
+    output: computed/daily/burns-YYYY-MM-DD.yaml
+    delivery: slack_dm
+    triggers:
+      - condition: "burn_pct >= 0.75"
+        notify: delivery_lead
+      - condition: "burn_pct >= 0.90"
+        notify: ceo
+
+  ar_scan:
+    time: "10:00 ET"
+    sources: [quickbooks.ar_aging]
+    output: computed/daily/ar-YYYY-MM-DD.yaml
+    owner: jose
+
+weekly:
+  ops_snapshot:
+    day: monday
+    time: "10:00 ET"
+    sources: [plaid.balances, teamwork.time_entries, teamwork.projects, atio_crm.deals, quickbooks.ar_aging]
+    metrics:
+      - cash_runway
+      - blended_utilization
+      - pipeline_coverage
+      - project_burn_summary
+      - ar_aging_summary
+      - revenue_gap
+    output: reports/weekly/snapshot-YYYY-WNN.html
+    delivery: slack_channel
+    protected_floor: true
+
+  ar_formal_review:
+    day: tuesday
+    time: "12:00 ET"
+    sources: [quickbooks.ar_aging]
+    owner: jose
+    reviewer: rahul
+
+  cash_forecast_2wk:
+    day: monday
+    time: "14:00 ET"
+    sources: [plaid.balances, quickbooks.ar_aging, quickbooks.ap_aging, atio_crm.deals, teamwork.milestones]
+    output: computed/weekly/forecast-YYYY-WNN.yaml
+
+  time_compliance:
+    day: monday
+    time: "10:00 ET"
+    sources: [teamwork.time_entries]
+    output: computed/weekly/compliance-YYYY-WNN.yaml
+    delivery: slack_channel
+
+monthly:
+  pnl_close:
+    due: 5th_calendar_day
+    sources: [quickbooks.pnl_monthly, quickbooks.expense_detail, quickbooks.payroll_summary]
+    output: reports/monthly/close-YYYY-MM.html
+    delivery: gmail
+    protected_floor: true
+    depends_on: jose_qb_close_by_3rd
+
+  cash_forecast_full:
+    due: 7th_calendar_day
+    sources: [plaid.balances, quickbooks.ar_aging, quickbooks.ap_aging, atio_crm.deals]
+    output: computed/monthly/forecast-13wk-YYYY-MM.yaml
+
+  utilization_report:
+    due: 5th_calendar_day
+    sources: [teamwork.time_entries]
+    output: reports/monthly/utilization-YYYY-MM.html
+
+  expense_variance:
+    due: 7th_calendar_day
+    sources: [quickbooks.expense_detail]
+    output: reports/monthly/expenses-YYYY-MM.html
+
+  client_profitability:
+    due: 10th_calendar_day
+    sources: [quickbooks.pnl_monthly, teamwork.time_entries]
+    output: reports/monthly/client-profit-YYYY-MM.html
+
+  salary_cap_check:
+    due: 5th_calendar_day
+    sources: [quickbooks.pnl_monthly, quickbooks.payroll_summary]
+    output: computed/monthly/salary-cap-YYYY-MM.yaml
+
+quarterly:
+  reforecast:
+    due: end_of_week_2
+    scenarios: [base, downside, upside]
+    output: reports/quarterly/reforecast-YYYY-QN.html
+
+  software_audit:
+    due: end_of_week_2
+    sources: [quickbooks.expense_detail]
+    output: reports/quarterly/software-audit-YYYY-QN.html
+
+  client_concentration:
+    due: end_of_week_2
+    sources: [quickbooks.pnl_monthly]
+    output: computed/quarterly/concentration-YYYY-QN.yaml
+
+  tax_reserve:
+    due: 15th_of_first_month
+    sources: [quickbooks.pnl_monthly]
+    output: computed/quarterly/tax-reserve-YYYY-QN.yaml
